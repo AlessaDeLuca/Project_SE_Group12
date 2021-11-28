@@ -58,7 +58,7 @@ public class ComplexNumbers {
     }
     
     public ComplexNumbers divide(ComplexNumbers n1, ComplexNumbers n2){
-        ComplexNumbers output = multiply(n1, invertSign(n2));
+        ComplexNumbers output = multiply(n1, conjugate(n2));
 	double div = Math.pow(mod(n2),2);
 	return new ComplexNumbers(output.getReal()/div,output.getImaginary()/div);
     }
@@ -69,11 +69,15 @@ public class ComplexNumbers {
         return new ComplexNumbers(r*Math.cos(theta),r*Math.sin(theta));
     }
     
+    public ComplexNumbers conjugate(ComplexNumbers n1){
+        return new ComplexNumbers(n1.getReal(),-n1.getImaginary());
+    }
+    
     public ComplexNumbers invertSign(ComplexNumbers n1){
         if(n1.imaginary==0 && n1.real!=0){
             return new ComplexNumbers(-n1.getReal());
         }else{            
-            return new ComplexNumbers(n1.getReal(),-n1.getImaginary());
+            return new ComplexNumbers(-n1.getReal(),-n1.getImaginary());
         }
     }
     
@@ -107,6 +111,14 @@ public class ComplexNumbers {
             im ="\n";
         
         return re+im;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ComplexNumbers))
+            return false;
+        ComplexNumbers a = (ComplexNumbers) obj;
+        return (real == a.real) && (imaginary == a.imaginary);
     }
     
     
