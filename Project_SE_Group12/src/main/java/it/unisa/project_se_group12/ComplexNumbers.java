@@ -5,8 +5,6 @@
 package it.unisa.project_se_group12;
 
 import static java.lang.Math.*;
-import java.util.Stack;
-
 /**
  *
  * @author leo
