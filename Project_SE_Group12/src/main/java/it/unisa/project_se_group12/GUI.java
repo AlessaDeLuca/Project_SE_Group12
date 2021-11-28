@@ -4,6 +4,7 @@
  */
 package it.unisa.project_se_group12;
 
+import java.util.Iterator;
 import java.util.Stack;
 import javax.swing.JOptionPane;
 
@@ -18,7 +19,6 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         stack = new Stack<ComplexNumbers>();
-        
     }
 
     /**
@@ -335,15 +335,23 @@ public class GUI extends javax.swing.JFrame {
             }
         
             stack.push(num);
-            //StackArea.append(stack.pop() + "\n");
-            //stack.push(num);
-            StackArea.setText(stack.toString() + "\n");
+            StackArea.setText(printStack());
             
             RealPart.setText("");
             ImPart.setText("");
         }
     }//GEN-LAST:event_EnterButtonActionPerformed
 
+    private String printStack(){
+        String str="";
+        Iterator<ComplexNumbers> iter = stack.iterator();
+        
+        while(iter.hasNext()){
+            str = str + iter.next().toString() ;
+        }
+        return str;
+    }
+    
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         if(stack.size()<=1){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -352,7 +360,7 @@ public class GUI extends javax.swing.JFrame {
             ComplexNumbers num2 = stack.pop();
             ComplexNumbers res = new ComplexNumbers().add(num1, num2);
             stack.push(res);
-            StackArea.setText(stack.toString());
+            StackArea.setText(printStack());
             Result.setText(res.toString());
         }
     }//GEN-LAST:event_AddButtonActionPerformed
@@ -369,7 +377,7 @@ public class GUI extends javax.swing.JFrame {
             ComplexNumbers num1 = stack.pop();
             ComplexNumbers res = new ComplexNumbers().subtract(num1, num2);
             stack.push(res);
-            StackArea.setText(stack.toString());
+            StackArea.setText(printStack());
             Result.setText(res.toString());
         }
     }//GEN-LAST:event_DiffButtonActionPerformed
@@ -382,7 +390,7 @@ public class GUI extends javax.swing.JFrame {
             ComplexNumbers num2 = stack.pop();
             ComplexNumbers res = new ComplexNumbers().multiply(num1, num2);
             stack.push(res);
-            StackArea.setText(stack.toString());
+            StackArea.setText(printStack());
             Result.setText(res.toString());
         }
     }//GEN-LAST:event_PerButtonActionPerformed
@@ -398,7 +406,7 @@ public class GUI extends javax.swing.JFrame {
         } else{
             ComplexNumbers res = new ComplexNumbers().divide(num1, num2);
             stack.push(res);
-            StackArea.setText(stack.toString());
+            StackArea.setText(printStack());
             Result.setText(res.toString());
         }
     }//GEN-LAST:event_DivButtonActionPerformed
@@ -410,7 +418,7 @@ public class GUI extends javax.swing.JFrame {
             ComplexNumbers num1 = stack.pop();
             ComplexNumbers res = new ComplexNumbers().invertSign(num1);
             stack.push(res);
-            StackArea.setText(stack.toString());
+            StackArea.setText(printStack());
             Result.setText(res.toString());
         }
     }//GEN-LAST:event_InvertButtonActionPerformed
@@ -422,7 +430,7 @@ public class GUI extends javax.swing.JFrame {
            ComplexNumbers num1 = stack.pop();
            ComplexNumbers res = new ComplexNumbers().squareRoot(num1);
            stack.push(res);
-           StackArea.setText(stack.toString());
+           StackArea.setText(printStack());
            Result.setText(res.toString());
        }
     }//GEN-LAST:event_RadButtonActionPerformed
@@ -432,7 +440,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
        }else{
             stack.pop();
-            StackArea.setText(stack.toString());
+            StackArea.setText(printStack());
         }
     }//GEN-LAST:event_dropButtonActionPerformed
 
