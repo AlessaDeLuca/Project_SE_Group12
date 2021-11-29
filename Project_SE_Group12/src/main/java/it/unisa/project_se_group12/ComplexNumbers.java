@@ -64,9 +64,15 @@ public class ComplexNumbers {
     }
     
    public ComplexNumbers squareRootComplex(ComplexNumbers n1){
-        double r=Math.sqrt(mod(n1));
-        double theta=Math.atan2(n1.getImaginary(),n1.getReal())/2;
-        return new ComplexNumbers(r*Math.cos(theta),r*Math.sin(theta));
+       double r=Math.sqrt(mod(n1));
+        if(n1.getReal()<0 && n1.getImaginary()==0){
+            return new ComplexNumbers(0,r);
+        }else{
+            
+            double theta=Math.atan2(n1.getImaginary(),n1.getReal())/2;
+            return new ComplexNumbers(r*Math.cos(theta),r*Math.sin(theta));
+        }
+        
     }
     
     public ComplexNumbers conjugate(ComplexNumbers n1){
