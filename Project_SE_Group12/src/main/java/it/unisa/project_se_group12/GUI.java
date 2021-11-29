@@ -112,7 +112,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("i");
+        jLabel4.setText("j");
 
         DiffButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         DiffButton.setForeground(new java.awt.Color(0, 153, 153));
@@ -229,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(EnterButton))
                             .addComponent(jLabel2)))
                     .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
