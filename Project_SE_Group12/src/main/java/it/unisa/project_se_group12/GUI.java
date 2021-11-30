@@ -30,6 +30,12 @@ public class GUI extends javax.swing.JFrame {
         if (real.isEmpty() && im.isEmpty()){
             return false;
         }
+        else if(real.isEmpty() && !(im.isEmpty())){
+            real = "0";
+        }
+        else if (!(real.isEmpty()) && im.isEmpty()){
+            im = "0";
+        }
         try{
             Double.class.isInstance(Double.parseDouble(real));
             Double.class.isInstance(Double.parseDouble(im));
