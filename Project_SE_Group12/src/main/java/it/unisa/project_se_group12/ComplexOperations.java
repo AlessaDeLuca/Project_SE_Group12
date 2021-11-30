@@ -69,7 +69,7 @@ public class ComplexOperations {
         ComplexNumbers n;
        if(n1.getReal()<0){
            n = squareRootComplex(n1);
-       }else if(n1.getReal()>0 && n1.getImaginary()!=0){
+       }else if(n1.getReal()>=0 && n1.getImaginary()!=0){
            n = squareRootComplex(n1);
        } 
        else {
