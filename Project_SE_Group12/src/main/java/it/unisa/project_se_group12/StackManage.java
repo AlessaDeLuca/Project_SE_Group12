@@ -59,4 +59,21 @@ public class StackManage {
     public Iterator<ComplexNumbers> iteratorStack(){
        return this.stack.iterator();
     }
+    
+    public void dupLastElement(){
+        this.stack.push(this.stack.lastElement());
+    }
+    
+    public void swap(){
+        ComplexNumbers num1=this.stack.pop();
+        ComplexNumbers num2=this.stack.pop();
+        this.stack.push(num1);
+        this.stack.push(num2);
+    }
+    
+    public void over(){
+        ComplexNumbers num1=this.stack.get(this.stack.size()-2);
+        this.stack.push(num1);
+        
+    }
 }
