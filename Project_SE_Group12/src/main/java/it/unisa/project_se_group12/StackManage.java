@@ -74,6 +74,10 @@ public class StackManage {
     public void over(){
         ComplexNumbers num1=this.stack.get(this.stack.size()-2);
         this.stack.push(num1);
-        
     }
+
+    public Stack<ComplexNumbers> getStack() {
+        return stack;
+    }
+    
 }
