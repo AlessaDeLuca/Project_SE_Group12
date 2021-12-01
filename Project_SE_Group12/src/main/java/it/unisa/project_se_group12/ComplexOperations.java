@@ -11,16 +11,8 @@ import static java.lang.Math.sqrt;
  * @author PC MSI
  */
 public class ComplexOperations {
-    ComplexNumbers c;
-    ComplexNumbers c1;
 
-    public ComplexOperations(ComplexNumbers c) {
-        this.c = c;
-    }
-
-    public ComplexOperations(ComplexNumbers c, ComplexNumbers c1) {
-        this.c = c;
-        this.c1 = c1;
+    public ComplexOperations() {
     }
 
     public ComplexNumbers add(ComplexNumbers n1, ComplexNumbers n2){
