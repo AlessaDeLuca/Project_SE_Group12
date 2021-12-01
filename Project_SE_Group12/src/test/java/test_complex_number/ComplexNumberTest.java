@@ -33,7 +33,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1, 3);
         result = new ComplexNumbers(2,6);
         
-        assertEquals(result,new ComplexOperations(num1,num2).add(num1, num2) );
+        assertEquals(result,new ComplexOperations().add(num1, num2) );
     }
     
     @Test 
@@ -42,7 +42,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1, 3);
         result = new ComplexNumbers(2,3);
         
-        assertEquals(result,new ComplexOperations(num1,num2).add(num1, num2) );
+        assertEquals(result,new ComplexOperations().add(num1, num2) );
     }
     
     @Test 
@@ -51,7 +51,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1);
         result = new ComplexNumbers(2);
         
-        assertEquals(result,new ComplexOperations(num1,num2).add(num1, num2) );
+        assertEquals(result,new ComplexOperations().add(num1, num2) );
     }
     
     @Test 
@@ -60,7 +60,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1, 3);
         result = new ComplexNumbers(0,0);
         
-        assertEquals(result,new ComplexOperations(num1,num2).subtract(num1, num2) );
+        assertEquals(result,new ComplexOperations().subtract(num1, num2) );
     }
     
     @Test 
@@ -69,7 +69,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1, 3);
         result = new ComplexNumbers(0,-3);
         
-        assertEquals(result,new ComplexOperations(num1,num2).subtract(num1, num2) );
+        assertEquals(result,new ComplexOperations().subtract(num1, num2) );
     }
     @Test 
     public void subtractTest3(){
@@ -77,7 +77,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1);
         result = new ComplexNumbers(0);
         
-        assertEquals(result,new ComplexOperations(num1,num2).subtract(num1, num2) );
+        assertEquals(result,new ComplexOperations().subtract(num1, num2) );
     }
     
     @Test 
@@ -86,7 +86,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1, 3);
         result = new ComplexNumbers(-8,6);
         
-        assertEquals(result,new ComplexOperations(num1,num2).multiply(num1, num2) );
+        assertEquals(result,new ComplexOperations().multiply(num1, num2) );
     }
     
     @Test 
@@ -95,7 +95,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1, 3);
         result = new ComplexNumbers(1,3);
         
-        assertEquals(result,new ComplexOperations(num1,num2).multiply(num1, num2) );
+        assertEquals(result,new ComplexOperations().multiply(num1, num2) );
     }
     
     
@@ -105,7 +105,7 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1);
         result = new ComplexNumbers(1);
         
-        assertEquals(result,new ComplexOperations(num1,num2).multiply(num1, num2) );
+        assertEquals(result,new ComplexOperations().multiply(num1, num2) );
     }
     
     @Test 
@@ -113,7 +113,7 @@ public class ComplexNumberTest {
         num1 =new ComplexNumbers(2,4);
         num2 = new ComplexNumbers(2,4);
         result = new ComplexNumbers(1);
-        ComplexNumbers res = new ComplexOperations(num1,num2).divide(num1, num2);
+        ComplexNumbers res = new ComplexOperations().divide(num1, num2);
         res.setReal(Math.round(res.getReal()));
         res.setImaginary(Math.round(res.getImaginary()));
         assertEquals(result, res);
@@ -124,7 +124,7 @@ public class ComplexNumberTest {
         num1 =new ComplexNumbers(1);
         num2 = new ComplexNumbers(2,4);
         result = new ComplexNumbers(0.09,-0.2);
-        ComplexNumbers res = new ComplexOperations(num1,num2).divide(num1, num2);
+        ComplexNumbers res = new ComplexOperations().divide(num1, num2);
         res.setReal(Math.floor(res.getReal() * 100)/100);
         res.setImaginary(Math.floor(res.getImaginary()*100)/100);
         assertEquals(result, res);
@@ -136,14 +136,14 @@ public class ComplexNumberTest {
         num2 = new ComplexNumbers(1);
         result = new ComplexNumbers(1);
         
-        assertEquals(result,new ComplexOperations(num1,num2).divide(num1, num2) );
+        assertEquals(result,new ComplexOperations().divide(num1, num2) );
     }
     
     @Test 
     public void squareRootTest1(){
         num1 =new ComplexNumbers(4, 4);
         result = new ComplexNumbers(2.197 , 0.910);
-        ComplexNumbers res = new ComplexOperations(num1).squareRoot(num1);
+        ComplexNumbers res = new ComplexOperations().squareRoot(num1);
         res.setReal(Math.floor(res.getReal() * 1000)/1000);
         res.setImaginary(Math.floor(res.getImaginary()*1000)/1000);
         assertEquals(result, res);
@@ -153,7 +153,7 @@ public class ComplexNumberTest {
     public void squareRootTest2(){
         num1 =new ComplexNumbers(0);
         result = new ComplexNumbers(0);
-        ComplexNumbers res = new ComplexOperations(num1).squareRoot(num1);
+        ComplexNumbers res = new ComplexOperations().squareRoot(num1);
     
         assertEquals(result, res);
     }
@@ -162,7 +162,7 @@ public class ComplexNumberTest {
     public void squareRootTest3(){
         num1 =new ComplexNumbers(4);
         result = new ComplexNumbers(2);
-        ComplexNumbers res = new ComplexOperations(num1).squareRoot(num1);
+        ComplexNumbers res = new ComplexOperations().squareRoot(num1);
     
         assertEquals(result, res);
     }
@@ -171,7 +171,7 @@ public class ComplexNumberTest {
     public void squareRootComplexTest1(){
         num1 =new ComplexNumbers(4, 4);
         result = new ComplexNumbers(2.197 , 0.910);
-        ComplexNumbers res = new ComplexOperations(num1).squareRootComplex(num1);
+        ComplexNumbers res = new ComplexOperations().squareRootComplex(num1);
         res.setReal(Math.floor(res.getReal() * 1000)/1000);
         res.setImaginary(Math.floor(res.getImaginary()*1000)/1000);
         assertEquals(result, res);
@@ -181,7 +181,7 @@ public class ComplexNumberTest {
     public void conjugateTest1(){
         num1 =new ComplexNumbers(4 ,4);
         result = new ComplexNumbers(4,-4);
-        ComplexNumbers res = new ComplexOperations(num1).conjugate(num1);
+        ComplexNumbers res = new ComplexOperations().conjugate(num1);
     
         assertEquals(result, res);
     }
@@ -190,7 +190,7 @@ public class ComplexNumberTest {
     public void conjugateTest2(){
         num1 =new ComplexNumbers(0);
         result = new ComplexNumbers(0);
-        ComplexNumbers res = new ComplexOperations(num1).conjugate(num1);
+        ComplexNumbers res = new ComplexOperations().conjugate(num1);
     
         assertEquals(result, res);
     }
@@ -199,7 +199,7 @@ public class ComplexNumberTest {
     public void invertSignTest1(){
         num1 =new ComplexNumbers(4 ,4);
         result = new ComplexNumbers(-4,-4);
-        ComplexNumbers res = new ComplexOperations(num1).invertSign(num1);
+        ComplexNumbers res = new ComplexOperations().invertSign(num1);
     
         assertEquals(result, res);
     }
@@ -208,7 +208,7 @@ public class ComplexNumberTest {
     public void invertSignTest2(){
         num1 =new ComplexNumbers(4);
         result = new ComplexNumbers(-4);
-        ComplexNumbers res = new ComplexOperations(num1).invertSign(num1);
+        ComplexNumbers res = new ComplexOperations().invertSign(num1);
     
         assertEquals(result, res);
     }
@@ -217,7 +217,7 @@ public class ComplexNumberTest {
     public void invertSignTest3(){
         num1 =new ComplexNumbers(0);
         result = new ComplexNumbers(0);
-        ComplexNumbers res = new ComplexOperations(num1).invertSign(num1);
+        ComplexNumbers res = new ComplexOperations().invertSign(num1);
     
         assertEquals(result, res);
     }
@@ -226,7 +226,7 @@ public class ComplexNumberTest {
     public void modTest1(){
         num1 =new ComplexNumbers(4 ,4);
         double result = 5.656;
-        double res = Math.floor(new ComplexOperations(num1).mod(num1) * 1000)/1000;
+        double res = Math.floor(new ComplexOperations().mod(num1) * 1000)/1000;
     
         assertEquals(result, res);
     }
@@ -235,7 +235,7 @@ public class ComplexNumberTest {
     public void modTest2(){
         num1 =new ComplexNumbers(-4 ,-4);
         double result = 5.656;
-        double res = Math.floor(new ComplexOperations(num1).mod(num1) * 1000)/1000;
+        double res = Math.floor(new ComplexOperations().mod(num1) * 1000)/1000;
     
         assertEquals(result, res);
     }
@@ -243,7 +243,7 @@ public class ComplexNumberTest {
     public void modTest3(){
         num1 =new ComplexNumbers(-4 ,4);
         double result = 5.656;
-        double res = Math.floor(new ComplexOperations(num1).mod(num1) * 1000)/1000;
+        double res = Math.floor(new ComplexOperations().mod(num1) * 1000)/1000;
     
         assertEquals(result, res);
     }
@@ -252,7 +252,7 @@ public class ComplexNumberTest {
     public void modTest4(){
         num1 =new ComplexNumbers(-4);
         double result = 4;
-        double res = Math.floor(new ComplexOperations(num1).mod(num1));
+        double res = Math.floor(new ComplexOperations().mod(num1));
     
         assertEquals(result, res);
     }
@@ -261,7 +261,7 @@ public class ComplexNumberTest {
     public void modTest5(){
         num1 =new ComplexNumbers(0 ,-4);
         double result = 4;
-        double res = Math.floor(new ComplexOperations(num1).mod(num1));
+        double res = Math.floor(new ComplexOperations().mod(num1));
     
         assertEquals(result, res);
     }
@@ -270,7 +270,7 @@ public class ComplexNumberTest {
     public void modTest6(){
         num1 =new ComplexNumbers(0);
         double result = 0;
-        double res = Math.floor(new ComplexOperations(num1).mod(num1));
+        double res = Math.floor(new ComplexOperations().mod(num1));
     
         assertEquals(result, res);
     }
