@@ -74,6 +74,9 @@ public class GUI extends javax.swing.JFrame {
         StackArea = new javax.swing.JTextArea();
         clearButton = new javax.swing.JButton();
         dropButton = new javax.swing.JButton();
+        dupButton = new javax.swing.JButton();
+        overButton = new javax.swing.JButton();
+        swapButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,6 +229,33 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        dupButton.setFont(new java.awt.Font("Tw Cen MT", 3, 14)); // NOI18N
+        dupButton.setForeground(new java.awt.Color(0, 153, 153));
+        dupButton.setText("DUP");
+        dupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dupButtonActionPerformed(evt);
+            }
+        });
+
+        overButton.setFont(new java.awt.Font("Tw Cen MT", 3, 14)); // NOI18N
+        overButton.setForeground(new java.awt.Color(0, 153, 153));
+        overButton.setText("OVER");
+        overButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                overButtonActionPerformed(evt);
+            }
+        });
+
+        swapButton.setFont(new java.awt.Font("Tw Cen MT", 3, 14)); // NOI18N
+        swapButton.setForeground(new java.awt.Color(0, 153, 153));
+        swapButton.setText("SWAP");
+        swapButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                swapButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -267,11 +297,20 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dropButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dropButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(overButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(swapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(20, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5)
@@ -320,7 +359,13 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(clearButton)
                         .addGap(18, 18, 18)
-                        .addComponent(dropButton)))
+                        .addComponent(dropButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(dupButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(swapButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(overButton)))
                 .addGap(53, 53, 53))
         );
 
@@ -484,6 +529,33 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_keyPressedReal
 
+    private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
+        if(stack.size()<=0){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+       }else{
+            stack.dupLastElement();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_dupButtonActionPerformed
+
+    private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
+        if(stack.size()<=1){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+       }else{
+            stack.over();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_overButtonActionPerformed
+
+    private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
+        if(stack.size()<=1){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+       }else{
+            stack.swap();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_swapButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -531,6 +603,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea StackArea;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton dropButton;
+    private javax.swing.JButton dupButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -538,5 +611,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton overButton;
+    private javax.swing.JButton swapButton;
     // End of variables declaration//GEN-END:variables
 }
