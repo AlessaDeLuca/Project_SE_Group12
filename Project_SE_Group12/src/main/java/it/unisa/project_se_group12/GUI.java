@@ -15,10 +15,12 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
 
     StackManage stack;
+    Variables variables;
     
     public GUI() {
         initComponents();
         stack = new StackManage();
+        variables = new Variables();
     }
 
     /**
@@ -72,9 +74,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         DiffButton = new javax.swing.JButton();
         PerButton = new javax.swing.JButton();
-        javax.swing.JButton DivButton = new javax.swing.JButton();
-        javax.swing.JButton InvertButton = new javax.swing.JButton();
-        javax.swing.JButton RadButton = new javax.swing.JButton();
+        DivButton = new javax.swing.JButton();
+        InvertButton = new javax.swing.JButton();
+        RadButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         StackArea = new javax.swing.JTextArea();
@@ -83,6 +85,13 @@ public class GUI extends javax.swing.JFrame {
         dupButton = new javax.swing.JButton();
         overButton = new javax.swing.JButton();
         swapButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        varList = new javax.swing.JComboBox<>();
+        varMinButton = new javax.swing.JButton();
+        varAddButton = new javax.swing.JButton();
+        varMajButton = new javax.swing.JButton();
+        varSubButton = new javax.swing.JButton();
+        variablesFields = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -262,6 +271,56 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("OUTPUT");
+
+        varList.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        varList.setForeground(new java.awt.Color(0, 153, 153));
+        varList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "y", "x", "z" }));
+        varList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varListActionPerformed(evt);
+            }
+        });
+
+        varMinButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        varMinButton.setForeground(new java.awt.Color(0, 153, 153));
+        varMinButton.setText("<\"x\"");
+        varMinButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varMinButtonActionPerformed(evt);
+            }
+        });
+
+        varAddButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        varAddButton.setForeground(new java.awt.Color(0, 153, 153));
+        varAddButton.setText("+\"x\"");
+        varAddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varAddButtonActionPerformed(evt);
+            }
+        });
+
+        varMajButton.setBackground(new java.awt.Color(255, 255, 255));
+        varMajButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        varMajButton.setForeground(new java.awt.Color(0, 153, 153));
+        varMajButton.setText(">\"x\"");
+        varMajButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varMajButtonActionPerformed(evt);
+            }
+        });
+
+        varSubButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        varSubButton.setForeground(new java.awt.Color(0, 153, 153));
+        varSubButton.setText("-\"x\"");
+        varSubButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                varSubButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -270,36 +329,48 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DiffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addComponent(RadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(PerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DiffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(RadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(PerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(DivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(14, 14, 14)
-                                        .addComponent(InvertButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(RealPart, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(54, 54, 54)
-                                .addComponent(jLabel3)))
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(ImPart, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addGap(27, 27, 27)
-                                .addComponent(EnterButton))
-                            .addComponent(jLabel2)))
-                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 77, Short.MAX_VALUE)
+                                .addComponent(DivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addComponent(InvertButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(RealPart, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel3))
+                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ImPart, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(27, 27, 27)
+                        .addComponent(EnterButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(varMajButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(varMinButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(varAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(varSubButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(38, 38, 38)
+                        .addComponent(varList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(variablesFields, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,7 +387,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(overButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(swapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(20, Short.MAX_VALUE))))
+                                .addContainerGap(14, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel5)
@@ -331,36 +402,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(ImPart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)
-                                .addComponent(EnterButton))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(RealPart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(AddButton)
-                                    .addComponent(DiffButton)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(RadButton)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(PerButton))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DivButton))))
-                        .addGap(18, 18, 18)
-                        .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(clearButton)
@@ -371,8 +413,54 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(swapButton)
                         .addGap(18, 18, 18)
-                        .addComponent(overButton)))
-                .addGap(53, 53, 53))
+                        .addComponent(overButton))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ImPart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)
+                                .addComponent(EnterButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(RealPart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)))
+                        .addGap(54, 54, 54)
+                        .addComponent(varMajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(AddButton)
+                                                .addComponent(DiffButton))
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(RadButton)
+                                                .addComponent(varMinButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(PerButton)
+                                            .addComponent(varAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(52, 52, 52)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(DivButton))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jLabel6))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(varSubButton))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(varList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(variablesFields, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -389,13 +477,107 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ImPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImPartActionPerformed
-        
-    }//GEN-LAST:event_ImPartActionPerformed
+    private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
+        if(stack.size()<=1){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            stack.swap();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_swapButtonActionPerformed
 
-    private void RealPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealPartActionPerformed
-        
-    }//GEN-LAST:event_RealPartActionPerformed
+    private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
+        if(stack.size()<=1){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            stack.over();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_overButtonActionPerformed
+
+    private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
+        if(stack.size()<=0){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            stack.dupLastElement();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_dupButtonActionPerformed
+
+    private void dropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtonActionPerformed
+        if(stack.size()<=0){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            stack.popFromStack();
+            StackArea.setText(printStack());
+        }
+    }//GEN-LAST:event_dropButtonActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        stack.clearStack();
+        StackArea.setText("");
+    }//GEN-LAST:event_clearButtonActionPerformed
+
+    private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
+        if(stack.size()<=0){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else {
+            ComplexNumbers num1 = stack.popFromStack();
+            ComplexNumbers res = new ComplexOperations().squareRoot(num1);
+            stack.pushtoStack(res);
+            StackArea.setText(printStack());
+            Result.setText(res.toString());
+        }
+    }//GEN-LAST:event_RadButtonActionPerformed
+
+    private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
+        if(stack.size()<=0){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            ComplexNumbers num1 = stack.popFromStack();
+            ComplexNumbers res = new ComplexOperations().invertSign(num1);
+            stack.pushtoStack(res);
+            StackArea.setText(printStack());
+            Result.setText(res.toString());
+        }
+    }//GEN-LAST:event_InvertButtonActionPerformed
+
+    private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
+        if(check2Numbers()){
+            ComplexNumbers num2 = stack.popFromStack();
+            ComplexNumbers num1 = stack.popFromStack();
+            if(num1.getReal()==0){
+                JOptionPane.showMessageDialog(this, "Enter a non zero divider","ERROR",JOptionPane.ERROR_MESSAGE);
+            }else{
+                ComplexNumbers res = new ComplexOperations().divide(num1, num2);
+                stack.pushtoStack(res);
+                StackArea.setText(printStack());
+                Result.setText(res.toString());
+            }
+        }
+    }//GEN-LAST:event_DivButtonActionPerformed
+
+    private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
+        if(check2Numbers()){
+            ComplexNumbers num1 = stack.popFromStack();
+            ComplexNumbers num2 = stack.popFromStack();
+            ComplexNumbers res = new ComplexOperations().multiply(num1, num2);
+            stack.pushtoStack(res);
+            StackArea.setText(printStack());
+            Result.setText(res.toString());
+        }
+    }//GEN-LAST:event_PerButtonActionPerformed
+
+    private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
+        if(check2Numbers()){
+            ComplexNumbers num2 = stack.popFromStack();
+            ComplexNumbers num1 = stack.popFromStack();
+            ComplexNumbers res = new ComplexOperations().subtract(num1, num2);
+            stack.pushtoStack(res);
+            StackArea.setText(printStack());
+            Result.setText(res.toString());
+        }
+    }//GEN-LAST:event_DiffButtonActionPerformed
 
     private void EnterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterButtonActionPerformed
         String real = RealPart.getText();
@@ -406,24 +588,14 @@ public class GUI extends javax.swing.JFrame {
             RealPart.setText("");
             ImPart.setText("");
         }else
-            JOptionPane.showMessageDialog(this, "Enter a valid Number","ERROR",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Enter a valid Number","ERROR",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_EnterButtonActionPerformed
 
-    private String printStack(){
-        String str="";
-        Iterator<ComplexNumbers> iter = stack.iteratorStack();
-        
-        while(iter.hasNext()){
-            str = str + iter.next().toString() ;
-        }
-        return str;
-    }
-    
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         if(check2Numbers()){
             ComplexNumbers num1 = stack.popFromStack();
             ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations(num2, num1).add(num1, num2);
+            ComplexNumbers res = new ComplexOperations().add(num1, num2);
             stack.pushtoStack(res);
             StackArea.setText(printStack());
             Result.setText(res.toString());
@@ -434,134 +606,98 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ResultActionPerformed
 
-    private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
-        if(check2Numbers()){
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations(num1, num1).subtract(num1, num2);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }
-    }//GEN-LAST:event_DiffButtonActionPerformed
-
-    private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
-        if(check2Numbers()){
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations(num2, num1).multiply(num1, num2);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }
-    }//GEN-LAST:event_PerButtonActionPerformed
-
-    private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
-        if(check2Numbers()){
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers num1 = stack.popFromStack();
-            if(num1.getReal()==0){
-                JOptionPane.showMessageDialog(this, "Enter a non zero divider","ERROR",JOptionPane.ERROR_MESSAGE);
-            }else{
-                ComplexNumbers res = new ComplexOperations(num2, num1).divide(num1, num2);
-                stack.pushtoStack(res);
-                StackArea.setText(printStack());
-                Result.setText(res.toString());
-            }
-        }
-    }//GEN-LAST:event_DivButtonActionPerformed
-
-    private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
-        if(stack.size()<=0){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else{
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations(num1).invertSign(num1);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }
-    }//GEN-LAST:event_InvertButtonActionPerformed
-
-    private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
-       if(stack.size()<=0){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-       }else {
-           ComplexNumbers num1 = stack.popFromStack();
-           ComplexNumbers res = new ComplexOperations(num1).squareRoot(num1);
-           stack.pushtoStack(res);
-           StackArea.setText(printStack());
-           Result.setText(res.toString());
-       }
-    }//GEN-LAST:event_RadButtonActionPerformed
-
-    private void dropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtonActionPerformed
-        if(stack.size()<=0){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-       }else{
-            stack.popFromStack();
-            StackArea.setText(printStack());
-        }
-    }//GEN-LAST:event_dropButtonActionPerformed
-
-    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        stack.clearStack();
-        StackArea.setText("");
-    }//GEN-LAST:event_clearButtonActionPerformed
-    
     private void keyPressedIM(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedIM
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-           String real = RealPart.getText();
-           String im = ImPart.getText(); 
-           if(check(real, im)){
-              stack.addIntoStack(real, im);
-              StackArea.setText(printStack());
-              RealPart.setText("");
-              ImPart.setText("");
-           }
+            String real = RealPart.getText();
+            String im = ImPart.getText();
+            if(check(real, im)){
+                stack.addIntoStack(real, im);
+                StackArea.setText(printStack());
+                RealPart.setText("");
+                ImPart.setText("");
+            }
         }
     }//GEN-LAST:event_keyPressedIM
 
+    private void ImPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImPartActionPerformed
+
+    }//GEN-LAST:event_ImPartActionPerformed
+
     private void keyPressedReal(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedReal
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-           String real = RealPart.getText();
-           String im = ImPart.getText(); 
-           if(check(real, im)){
-              stack.addIntoStack(real, im);
-              StackArea.setText(printStack());
-              RealPart.setText("");
-              ImPart.setText("");
-           }
+            String real = RealPart.getText();
+            String im = ImPart.getText();
+            if(check(real, im)){
+                stack.addIntoStack(real, im);
+                StackArea.setText(printStack());
+                RealPart.setText("");
+                ImPart.setText("");
+            }
         }
     }//GEN-LAST:event_keyPressedReal
 
-    private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
+    private void RealPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealPartActionPerformed
+
+    }//GEN-LAST:event_RealPartActionPerformed
+
+    private void varMajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varMajButtonActionPerformed
         if(stack.size()<=0){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-       }else{
-            stack.dupLastElement();
-            StackArea.setText(printStack());
+        }else{
+            variables.pushIntoVariable(varList.getSelectedItem().toString(), stack);
+            variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
         }
-    }//GEN-LAST:event_dupButtonActionPerformed
+    }//GEN-LAST:event_varMajButtonActionPerformed
 
-    private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
-        if(stack.size()<=1){
+    private void varListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varListActionPerformed
+        if(variables.getMap().get(varList.getSelectedItem().toString())== null){
+            variablesFields.setText("");
+        }else{
+            variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
+        }
+    }//GEN-LAST:event_varListActionPerformed
+
+    private void varAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varAddButtonActionPerformed
+        if(stack.size()<=0){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-       }else{
-            stack.over();
-            StackArea.setText(printStack());
+        }else if(variables.getMap().get(varList.getSelectedItem().toString())== null){
+            JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            variables.addWithStack(varList.getSelectedItem().toString(), stack);
+            variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
         }
-    }//GEN-LAST:event_overButtonActionPerformed
+    }//GEN-LAST:event_varAddButtonActionPerformed
 
-    private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
-        if(stack.size()<=1){
+    private void varMinButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varMinButtonActionPerformed
+         if(variables.getMap().get(varList.getSelectedItem().toString())== null){
+            JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
+         }else {
+            variables.pushIntoStack(varList.getSelectedItem().toString(), stack);
+            StackArea.setText(printStack());
+         }
+    }//GEN-LAST:event_varMinButtonActionPerformed
+
+    private void varSubButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varSubButtonActionPerformed
+        if(stack.size()<=0){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-       }else{
-            stack.swap();
-            StackArea.setText(printStack());
+        }else if(variables.getMap().get(varList.getSelectedItem().toString())== null){
+            JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
+        }else{
+            variables.subWithStack(varList.getSelectedItem().toString(), stack);
+            variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
         }
-    }//GEN-LAST:event_swapButtonActionPerformed
+    }//GEN-LAST:event_varSubButtonActionPerformed
 
+    private String printStack(){
+        String str="";
+        Iterator<ComplexNumbers> iter = stack.iteratorStack();
+        
+        while(iter.hasNext()){
+            str = str + iter.next().toString() ;
+        }
+        return str;
+    }
+        
     /**
      * @param args the command line arguments
      */
@@ -601,9 +737,12 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
     private javax.swing.JButton DiffButton;
+    private javax.swing.JButton DivButton;
     private javax.swing.JButton EnterButton;
     private javax.swing.JTextField ImPart;
+    private javax.swing.JButton InvertButton;
     private javax.swing.JButton PerButton;
+    private javax.swing.JButton RadButton;
     private javax.swing.JTextField RealPart;
     private javax.swing.JTextField Result;
     private javax.swing.JTextArea StackArea;
@@ -615,9 +754,16 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton overButton;
     private javax.swing.JButton swapButton;
+    private javax.swing.JButton varAddButton;
+    private javax.swing.JComboBox<String> varList;
+    private javax.swing.JButton varMajButton;
+    private javax.swing.JButton varMinButton;
+    private javax.swing.JButton varSubButton;
+    private javax.swing.JTextField variablesFields;
     // End of variables declaration//GEN-END:variables
 }
