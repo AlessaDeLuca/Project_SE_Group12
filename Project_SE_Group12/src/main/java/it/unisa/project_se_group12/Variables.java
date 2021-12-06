@@ -5,7 +5,6 @@
 package it.unisa.project_se_group12;
 
 import java.util.HashMap;
-import java.util.Stack;
 
 /**
  *
@@ -31,7 +30,7 @@ public class Variables {
 
     public void pushIntoStack(String varKey, StackManage stack){
         stack.getStack().push(this.map.get(varKey));
-        this.map.remove(varKey);
+        this.map.put(varKey, null);
     }
     
     public void addWithStack(String varKey, StackManage stack){

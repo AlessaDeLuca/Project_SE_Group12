@@ -327,6 +327,12 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        variablesFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                variablesFieldsActionPerformed(evt);
+            }
+        });
+
         customOperationButton.setFont(new java.awt.Font("Tw Cen MT", 3, 18)); // NOI18N
         customOperationButton.setForeground(new java.awt.Color(0, 153, 153));
         customOperationButton.setText("Custom operation");
@@ -708,6 +714,10 @@ public class GUI extends javax.swing.JFrame {
         box.setVisible(true);
         
     }//GEN-LAST:event_customOperationButtonActionPerformed
+
+    private void variablesFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variablesFieldsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_variablesFieldsActionPerformed
 
     private String printStack(){
         String str="";
