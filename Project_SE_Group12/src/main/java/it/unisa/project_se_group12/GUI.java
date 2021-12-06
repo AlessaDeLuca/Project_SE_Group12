@@ -640,6 +640,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             variables.pushIntoVariable(varList.getSelectedItem().toString(), stack);
+            StackArea.setText(printStack());
             variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
         }
     }//GEN-LAST:event_varMajButtonActionPerformed
@@ -669,6 +670,7 @@ public class GUI extends javax.swing.JFrame {
          }else {
             variables.pushIntoStack(varList.getSelectedItem().toString(), stack);
             StackArea.setText(printStack());
+            variablesFields.setText("");
          }
     }//GEN-LAST:event_varMinButtonActionPerformed
 
