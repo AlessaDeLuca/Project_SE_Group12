@@ -665,6 +665,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="variablesFields">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="variablesFieldsActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="customOperationButton">
           <Properties>
