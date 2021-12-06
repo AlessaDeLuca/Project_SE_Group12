@@ -6,6 +6,7 @@ package it.unisa.project_se_group12;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -13,13 +14,16 @@ import java.awt.event.WindowEvent;
  */
 public class CustomOperation extends javax.swing.JFrame {
     UDO udo;
+    DefaultListModel<String> model;
     /**
      * Creates new form CustomOperation
      */
-    public CustomOperation(UDO udo) {
+    public CustomOperation(UDO udo, DefaultListModel<String> model) {
         initComponents();
         this.udo = udo;
+        this.model = model;
         setDefaultCloseOperation(CustomOperation.DISPOSE_ON_CLOSE);
+        NameList.setModel(this.model);
     }
 
     /**
@@ -34,10 +38,8 @@ public class CustomOperation extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        InsertNameField = new javax.swing.JTextField();
+        insertNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ShowOperationArea = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         InsertButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
@@ -52,7 +54,13 @@ public class CustomOperation extends javax.swing.JFrame {
         swapButton = new javax.swing.JButton();
         overButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        OperationArea = new javax.swing.JTextArea();
+        operationArea = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        NameList = new javax.swing.JList<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        OperationView = new javax.swing.JTextArea();
+        deleteButton = new javax.swing.JButton();
+        modifyButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,20 +74,15 @@ public class CustomOperation extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name: ");
 
-        InsertNameField.addActionListener(new java.awt.event.ActionListener() {
+        insertNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertNameFieldActionPerformed(evt);
+                insertNameFieldActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Select operations:");
-
-        ShowOperationArea.setColumns(20);
-        ShowOperationArea.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        ShowOperationArea.setRows(5);
-        jScrollPane1.setViewportView(ShowOperationArea);
 
         jLabel4.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,7 +152,7 @@ public class CustomOperation extends javax.swing.JFrame {
 
         InvertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         InvertButton.setForeground(new java.awt.Color(0, 153, 153));
-        InvertButton.setText("Invert sign");
+        InvertButton.setText("+-");
         InvertButton.setActionCommand("-x");
         InvertButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         InvertButton.addActionListener(new java.awt.event.ActionListener() {
@@ -203,10 +206,37 @@ public class CustomOperation extends javax.swing.JFrame {
             }
         });
 
-        OperationArea.setColumns(20);
-        OperationArea.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        OperationArea.setRows(5);
-        jScrollPane2.setViewportView(OperationArea);
+        operationArea.setColumns(20);
+        operationArea.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        operationArea.setRows(5);
+        jScrollPane2.setViewportView(operationArea);
+
+        NameList.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        NameList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        NameList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NameListMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(NameList);
+
+        OperationView.setColumns(20);
+        OperationView.setRows(5);
+        jScrollPane1.setViewportView(OperationView);
+
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        modifyButton.setText("Modify");
+        modifyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -215,7 +245,7 @@ public class CustomOperation extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(InsertNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1)
@@ -243,14 +273,24 @@ public class CustomOperation extends javax.swing.JFrame {
                                 .addComponent(swapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(overButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2)
                     .addComponent(InsertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(36, 36, 36))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,7 +302,7 @@ public class CustomOperation extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(InsertNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(insertNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -284,8 +324,15 @@ public class CustomOperation extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(deleteButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(modifyButton)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(InsertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -305,62 +352,83 @@ public class CustomOperation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InsertNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNameFieldActionPerformed
+    private void insertNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertNameFieldActionPerformed
         
-    }//GEN-LAST:event_InsertNameFieldActionPerformed
+    }//GEN-LAST:event_insertNameFieldActionPerformed
 
     private void InsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertButtonActionPerformed
-        String name = InsertNameField.getText();
-        String operation = OperationArea.getText();
+        String name = insertNameField.getText();
+        String operation = operationArea.getText();
         udo.insertUDO(name, operation);
-        ShowOperationArea.setText(udo.toString());
-        InsertNameField.setText("");
-        OperationArea.setText("");
+        model.addElement(name);
+        insertNameField.setText("");
+        operationArea.setText("");
     }//GEN-LAST:event_InsertButtonActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "+ ");
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "- ");
     }//GEN-LAST:event_DiffButtonActionPerformed
 
     private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
-       
+        operationArea.setText(operationArea.getText() + "* ");
     }//GEN-LAST:event_PerButtonActionPerformed
 
     private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "÷ ");
     }//GEN-LAST:event_DivButtonActionPerformed
 
     private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "√ ");
     }//GEN-LAST:event_RadButtonActionPerformed
 
     private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "+- ");
     }//GEN-LAST:event_InvertButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "Clear ");
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void dropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtonActionPerformed
-       
+       operationArea.setText(operationArea.getText() + "Drop ");
     }//GEN-LAST:event_dropButtonActionPerformed
 
     private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
-        
+       operationArea.setText(operationArea.getText() + "Dup "); 
     }//GEN-LAST:event_dupButtonActionPerformed
 
     private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "Swap ");
     }//GEN-LAST:event_swapButtonActionPerformed
 
     private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
-        
+        operationArea.setText(operationArea.getText() + "Over ");
     }//GEN-LAST:event_overButtonActionPerformed
+
+    private void NameListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NameListMouseClicked
+        String key = NameList.getSelectedValue();
+        OperationView.setText(udo.getMap().get(key));
+    }//GEN-LAST:event_NameListMouseClicked
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+         String key = NameList.getSelectedValue();
+         udo.deleteUDO(key);
+         this.model.removeElement(key);
+         OperationView.setText("");
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
+        String key = NameList.getSelectedValue();
+        insertNameField.setText(key);
+        operationArea.setText(udo.getMap().get(key));
+        udo.deleteUDO(key);
+        this.model.removeElement(key);
+        OperationView.setText("");
+    }//GEN-LAST:event_modifyButtonActionPerformed
 
     
     /**
@@ -403,13 +471,14 @@ public class CustomOperation extends javax.swing.JFrame {
     private javax.swing.JButton AddButton;
     private javax.swing.JButton DiffButton;
     private javax.swing.JButton InsertButton;
-    private javax.swing.JTextField InsertNameField;
-    private javax.swing.JTextArea OperationArea;
+    private javax.swing.JList<String> NameList;
+    private javax.swing.JTextArea OperationView;
     private javax.swing.JButton PerButton;
-    private javax.swing.JTextArea ShowOperationArea;
     private javax.swing.JButton clearButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton dropButton;
     private javax.swing.JButton dupButton;
+    private javax.swing.JTextField insertNameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -417,6 +486,9 @@ public class CustomOperation extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton modifyButton;
+    private javax.swing.JTextArea operationArea;
     private javax.swing.JButton overButton;
     private javax.swing.JButton swapButton;
     // End of variables declaration//GEN-END:variables

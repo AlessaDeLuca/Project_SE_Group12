@@ -6,6 +6,7 @@ package it.unisa.project_se_group12;
 
 import java.util.Iterator;
 import java.util.Stack;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,14 +19,15 @@ public class GUI extends javax.swing.JFrame {
     Variables variables;
     UDO udo;
     CustomOperation box;
+    DefaultListModel<String> model = new DefaultListModel<String>();
     
     public GUI() {
         initComponents();
         stack = new StackManage();
         variables = new Variables();
         udo = new UDO();
-        box = new CustomOperation(udo);
-       
+        box = new CustomOperation(udo, model);
+        OperationList.setModel(model);
     }
 
     /**
@@ -98,6 +100,8 @@ public class GUI extends javax.swing.JFrame {
         varSubButton = new javax.swing.JButton();
         variablesFields = new javax.swing.JTextField();
         customOperationButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        OperationList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -342,6 +346,15 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        OperationList.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        OperationList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        OperationList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OperationListMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(OperationList);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -383,7 +396,6 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(customOperationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(varMajButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -393,7 +405,10 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addComponent(varList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(variablesFields, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(variablesFields, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(customOperationButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(25, 25, 25)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -479,7 +494,9 @@ public class GUI extends javax.swing.JFrame {
                             .addGap(35, 35, 35)
                             .addComponent(overButton))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -710,7 +727,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_RealPartActionPerformed
 
     private void customOperationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customOperationButtonActionPerformed
-
         box.setVisible(true);
         
     }//GEN-LAST:event_customOperationButtonActionPerformed
@@ -718,6 +734,12 @@ public class GUI extends javax.swing.JFrame {
     private void variablesFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variablesFieldsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_variablesFieldsActionPerformed
+
+    private void OperationListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OperationListMouseClicked
+        String key = OperationList.getSelectedValue();
+        udo.executeOperation(key, stack, StackArea);
+        StackArea.setText(printStack());
+    }//GEN-LAST:event_OperationListMouseClicked
 
     private String printStack(){
         String str="";
@@ -770,6 +792,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton DiffButton;
     private javax.swing.JButton EnterButton;
     private javax.swing.JTextField ImPart;
+    private javax.swing.JList<String> OperationList;
     private javax.swing.JButton PerButton;
     private javax.swing.JTextField RealPart;
     private javax.swing.JTextField Result;
@@ -786,6 +809,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton overButton;
     private javax.swing.JButton swapButton;
     private javax.swing.JButton varAddButton;

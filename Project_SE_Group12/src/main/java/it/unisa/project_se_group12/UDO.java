@@ -11,7 +11,6 @@ import java.util.Set;
  *
  * @author PC MSI
  */
-//NON CAMBIAREEEEE!!!!!!!!
 
 public class UDO {
     
@@ -25,6 +24,9 @@ public class UDO {
         this.map.put(name, operation);
     }
     
+    public void deleteUDO(String name){
+        this.map.remove(name);
+    }
     
     public HashMap<String, String> getMap() {
         return map;
@@ -40,9 +42,73 @@ public class UDO {
         return str;
     }
     
+    public void executeOperation(String key, StackManage stack, javax.swing.JTextArea StackArea ){
+        String operation = map.get(key);
+        String[] step = operation.split(" ");
+        
+        for(int i=0;i<step.length;i++){
+            if(step[i].equals("+")){
+                ComplexNumbers num1 = stack.popFromStack();
+                ComplexNumbers num2 = stack.popFromStack();
+                ComplexNumbers res = new ComplexOperations().add(num1, num2);
+                stack.pushtoStack(res);
+                StackArea.setText(stack.pntStack());
+            }if(step[i].equals("-")){
+                ComplexNumbers num1 = stack.popFromStack();
+                ComplexNumbers num2 = stack.popFromStack();
+                ComplexNumbers res = new ComplexOperations().subtract(num1, num2);
+                stack.pushtoStack(res);
+                StackArea.setText(stack.pntStack());
+            }
+             if(step[i].equals("*")){
+                ComplexNumbers num1 = stack.popFromStack();
+                ComplexNumbers num2 = stack.popFromStack();
+                ComplexNumbers res = new ComplexOperations().multiply(num1, num2);
+                stack.pushtoStack(res);
+                StackArea.setText(stack.pntStack());
+            }
+             if(step[i].equals("÷")){
+                ComplexNumbers num1 = stack.popFromStack();
+                ComplexNumbers num2 = stack.popFromStack();
+                ComplexNumbers res = new ComplexOperations().divide(num1, num2);
+                stack.pushtoStack(res);
+                StackArea.setText(stack.pntStack());
+            } 
+             if(step[i].equals("√")){
+                ComplexNumbers num1 = stack.popFromStack();
+                ComplexNumbers res = new ComplexOperations().squareRoot(num1);
+                stack.pushtoStack(res);
+                StackArea.setText(stack.pntStack());
+            }
+             if(step[i].equals("+-")){
+                ComplexNumbers num1 = stack.popFromStack();
+                ComplexNumbers res = new ComplexOperations().invertSign(num1);
+                stack.pushtoStack(res);
+                StackArea.setText(stack.pntStack());
+            }
+             if(step[i].equals("Clear")){
+                stack.clearStack();
+                StackArea.setText("");
+            }
+             if(step[i].equals("Drop")){
+                stack.popFromStack();
+                //StackArea.setText(stack.pntStack());
+            }if(step[i].equals("Dup")){
+                stack.dupLastElement();
+                //StackArea.setText(stack.pntStack());
+            }if(step[i].equals("Swap")){
+                stack.swap();
+            }if(step[i].equals("Over")){
+                stack.over();
+                //StackArea.setText("");
+            }if(map.containsKey(step[i])){
+                this.executeOperation(step[i], stack, StackArea);
+            }
+             
+                
+        }
+            
+        
+    }
     
-    
-    
-
-
 }

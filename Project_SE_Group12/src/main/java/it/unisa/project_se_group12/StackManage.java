@@ -80,4 +80,16 @@ public class StackManage {
         return stack;
     }
     
+    
+    public String pntStack(){
+        String str="";
+        Iterator<ComplexNumbers> iter = stack.iterator();
+        
+        while(iter.hasNext()){
+            str = str + iter.next().toString() ;
+        }
+        return str;
+    }
+        
+    
 }
