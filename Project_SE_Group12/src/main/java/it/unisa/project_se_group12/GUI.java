@@ -16,11 +16,16 @@ public class GUI extends javax.swing.JFrame {
 
     StackManage stack;
     Variables variables;
+    UDO udo;
+    CustomOperation box;
     
     public GUI() {
         initComponents();
         stack = new StackManage();
         variables = new Variables();
+        udo = new UDO();
+        box = new CustomOperation(udo);
+       
     }
 
     /**
@@ -699,8 +704,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_RealPartActionPerformed
 
     private void customOperationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customOperationButtonActionPerformed
-        CustomOperation box = new CustomOperation();
+
         box.setVisible(true);
+        
     }//GEN-LAST:event_customOperationButtonActionPerformed
 
     private String printStack(){

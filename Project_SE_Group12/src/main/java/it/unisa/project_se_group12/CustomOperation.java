@@ -4,17 +4,22 @@
  */
 package it.unisa.project_se_group12;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author PC MSI
  */
 public class CustomOperation extends javax.swing.JFrame {
-
+    UDO udo;
     /**
      * Creates new form CustomOperation
      */
-    public CustomOperation() {
+    public CustomOperation(UDO udo) {
         initComponents();
+        this.udo = udo;
+        setDefaultCloseOperation(CustomOperation.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -301,11 +306,16 @@ public class CustomOperation extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void InsertNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNameFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_InsertNameFieldActionPerformed
 
     private void InsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertButtonActionPerformed
-        // TODO add your handling code here:
+        String name = InsertNameField.getText();
+        String operation = OperationArea.getText();
+        udo.insertUDO(name, operation);
+        ShowOperationArea.setText(udo.toString());
+        InsertNameField.setText("");
+        OperationArea.setText("");
     }//GEN-LAST:event_InsertButtonActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
@@ -356,6 +366,7 @@ public class CustomOperation extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -381,11 +392,11 @@ public class CustomOperation extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CustomOperation().setVisible(true);
-            }
-        });
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+    //         new CustomOperation().setVisible(false);
+       }
+       });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
