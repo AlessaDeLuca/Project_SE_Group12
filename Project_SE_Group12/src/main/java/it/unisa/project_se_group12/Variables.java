@@ -26,11 +26,12 @@ public class Variables {
     }
     
     public void pushIntoVariable(String varKey, StackManage stack){
-        this.map.replace(varKey, stack.getStack().lastElement());
+        this.map.replace(varKey, stack.popFromStack());
     }
 
     public void pushIntoStack(String varKey, StackManage stack){
-        stack.getStack().push(map.get(varKey));
+        stack.getStack().push(this.map.get(varKey));
+        this.map.remove(varKey);
     }
     
     public void addWithStack(String varKey, StackManage stack){
