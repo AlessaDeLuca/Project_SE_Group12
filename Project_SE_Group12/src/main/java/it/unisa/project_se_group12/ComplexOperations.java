@@ -5,30 +5,46 @@
 package it.unisa.project_se_group12;
 
 import static java.lang.Math.sqrt;
+import java.util.Stack;
 
 /**
  *
  * @author PC MSI
  */
-public class ComplexOperations {
 
+//La classe ComplexOperations è stata creata al fine di gestire tutte le operazioni fra numeri complessi.
+public class ComplexOperations {
+    
+    //crea istanza della classe
     public ComplexOperations() {
     }
-
+    
+    //controlla se lo stack possiede almeno due elementi
+    public boolean check2Numbers(Stack<ComplexNumbers> stack){
+        if(stack.size()<=1){
+            return false;
+        }else
+            return true;
+    }
+    
+    //somma tra due numeri complessi.
     public ComplexNumbers add(ComplexNumbers n1, ComplexNumbers n2){
         return new ComplexNumbers(n1.getReal() + n2.getReal(), n1.getImaginary() + n2.getImaginary());
     }
     
+    //sottrazione tra due numeri complessi
     public ComplexNumbers subtract(ComplexNumbers n1, ComplexNumbers n2){
         return new ComplexNumbers(n1.getReal() - n2.getReal(), n1.getImaginary() - n2.getImaginary());
     }
     
+    //moltiplicazione tra due numeri complessi. 
     public ComplexNumbers multiply(ComplexNumbers n1, ComplexNumbers n2){
         double _real = n1.getReal() * n2.getReal() - n1.getImaginary() *n2.getImaginary();
         double _imaginary = n1.getReal() * n2.getImaginary() + n1.getImaginary() * n2.getReal();
 	return new ComplexNumbers(_real,_imaginary);
     }
     
+    //divisione tra due numeri complessi
     public ComplexNumbers divide(ComplexNumbers n1, ComplexNumbers n2){
         ComplexNumbers output = multiply(n1, conjugate(n2));
 	double div = Math.pow(mod(n2),2);

@@ -57,13 +57,7 @@ public class GUI extends javax.swing.JFrame {
         return true; 
     }
     
-    public boolean check2Numbers(){
-        if(stack.size()<=1){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-            return false;
-        }else
-            return true;
-    }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -629,39 +623,48 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_InvertButtonActionPerformed
 
     private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
-        if(check2Numbers()){
+        ComplexOperations op = new ComplexOperations();
+        if(op.check2Numbers(stack.getStack())){
             ComplexNumbers num2 = stack.popFromStack();
             ComplexNumbers num1 = stack.popFromStack();
             if(num1.getReal()==0){
                 JOptionPane.showMessageDialog(this, "Enter a non zero divider","ERROR",JOptionPane.ERROR_MESSAGE);
             }else{
-                ComplexNumbers res = new ComplexOperations().divide(num1, num2);
+                ComplexNumbers res = op.divide(num1, num2);
                 stack.pushtoStack(res);
                 StackArea.setText(printStack());
                 Result.setText(res.toString());
             }
+        }else{
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_DivButtonActionPerformed
 
     private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
-        if(check2Numbers()){
+        ComplexOperations op = new ComplexOperations();
+        if(op.check2Numbers(stack.getStack())){
             ComplexNumbers num1 = stack.popFromStack();
             ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations().multiply(num1, num2);
+            ComplexNumbers res = op.multiply(num1, num2);
             stack.pushtoStack(res);
             StackArea.setText(printStack());
             Result.setText(res.toString());
+        }else{
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_PerButtonActionPerformed
 
     private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
-        if(check2Numbers()){
+        ComplexOperations op = new ComplexOperations();
+        if(op.check2Numbers(stack.getStack())){
             ComplexNumbers num2 = stack.popFromStack();
             ComplexNumbers num1 = stack.popFromStack();
             ComplexNumbers res = new ComplexOperations().subtract(num1, num2);
             stack.pushtoStack(res);
             StackArea.setText(printStack());
             Result.setText(res.toString());
+        }else{
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_DiffButtonActionPerformed
 
@@ -678,13 +681,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_EnterButtonActionPerformed
 
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        if(check2Numbers()){
+        ComplexOperations op = new ComplexOperations();
+        if(op.check2Numbers(stack.getStack())){
             ComplexNumbers num1 = stack.popFromStack();
             ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations().add(num1, num2);
+            ComplexNumbers res = op.add(num1, num2);
             stack.pushtoStack(res);
             StackArea.setText(printStack());
             Result.setText(res.toString());
+        }else{
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AddButtonActionPerformed
 
@@ -737,7 +743,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void OperationListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OperationListMouseClicked
         String key = OperationList.getSelectedValue();
-        udo.executeOperation(key, stack, StackArea);
+        if(!udo.executeOperation(key, stack, StackArea)){
+            JOptionPane.showMessageDialog(this, "Not enough numbers, the rsult could be wrong!","ERROR",JOptionPane.ERROR_MESSAGE);
+        }
         StackArea.setText(printStack());
     }//GEN-LAST:event_OperationListMouseClicked
 
