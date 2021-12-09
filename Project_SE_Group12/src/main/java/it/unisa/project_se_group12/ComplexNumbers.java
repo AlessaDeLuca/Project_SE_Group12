@@ -7,10 +7,10 @@ package it.unisa.project_se_group12;
  *
  * @author leo
  */
-
-//La classe ComplexNumbers ci consente di creare un oggetto ComplexNumbers a partire da due numeri che rappresentano parte reale
-//e parte immaginaria. Sono presenti metodi per confrontare, stampare e ottenere attributi della classe.
-
+/*the class ComplexNumbers allows us to create an object ComplexNumber with 2 attributes:
+-double real (that represent the real part of the complex number);
+-double immaginary (that represent the immaginary part of the complex number).
+In this class there are also methods to compare, print and obtain class attributes.*/
 public class ComplexNumbers {
     private double real;
     private double imaginary;
