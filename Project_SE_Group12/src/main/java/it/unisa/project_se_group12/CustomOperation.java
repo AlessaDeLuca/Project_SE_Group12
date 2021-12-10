@@ -4,21 +4,19 @@
  */
 package it.unisa.project_se_group12;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import javax.swing.DefaultListModel;
 
 /**
- *
+ * This class allows us to manage the interface that consent at the user to create custom operations.
  * @author PC MSI
  */
-/*this class allows us to manage the interface that consent at the user to create custom
-operations*/
 public class CustomOperation extends javax.swing.JFrame {
     UDO udo;
     DefaultListModel<String> model;
     /**
      * Creates new form CustomOperation
+     * @param udo : User Defined Operation
+     * @param model : 
      */
     public CustomOperation(UDO udo, DefaultListModel<String> model) {
         initComponents();
@@ -364,12 +362,17 @@ public class CustomOperation extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-/*text field for the name of the custom operation*/
+/**
+ * Textfield for the name of the custom operation.
+ * @param evt 
+ */
     private void insertNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertNameFieldActionPerformed
         
     }//GEN-LAST:event_insertNameFieldActionPerformed
-/*button to insert the operation into the Hash Map that preserve all custom 
-  operations created by the user*/
+/**
+ * Button that allows to the user to insert the operation into the area (Hash Map) that preserve all custom operations created.
+ * @param evt 
+ */
     private void InsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertButtonActionPerformed
         String name = insertNameField.getText();
         String operation = operationArea.getText();
@@ -378,63 +381,105 @@ public class CustomOperation extends javax.swing.JFrame {
         insertNameField.setText("");
         operationArea.setText("");
     }//GEN-LAST:event_InsertButtonActionPerformed
-/*button to add sum operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add sum operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         operationArea.setText(operationArea.getText() + "+ ");
     }//GEN-LAST:event_AddButtonActionPerformed
-/*button to add difference operation into the text field of the operation that a custom operation have to do*/
+/**
+ * button that allows to the user to add difference operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
         operationArea.setText(operationArea.getText() + "- ");
     }//GEN-LAST:event_DiffButtonActionPerformed
-/*button to add product operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add product operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
         operationArea.setText(operationArea.getText() + "* ");
     }//GEN-LAST:event_PerButtonActionPerformed
-/*button to add division operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add division operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
         operationArea.setText(operationArea.getText() + "÷ ");
     }//GEN-LAST:event_DivButtonActionPerformed
-/*button to add square root operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add square root operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
         operationArea.setText(operationArea.getText() + "√ ");
     }//GEN-LAST:event_RadButtonActionPerformed
-/*button to add invert sign operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add invert sign operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
         operationArea.setText(operationArea.getText() + "+- ");
     }//GEN-LAST:event_InvertButtonActionPerformed
-/*button to add clear operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add clear operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         operationArea.setText(operationArea.getText() + "Clear ");
     }//GEN-LAST:event_clearButtonActionPerformed
-/*button to add drop operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add drop operation into the text field of the operation that a custom operation have to do
+ * @param evt 
+ */
     private void dropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtonActionPerformed
        operationArea.setText(operationArea.getText() + "Drop ");
     }//GEN-LAST:event_dropButtonActionPerformed
-/*button to add dup operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add dup operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
        operationArea.setText(operationArea.getText() + "Dup "); 
     }//GEN-LAST:event_dupButtonActionPerformed
-/*button to add swap operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add swap operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
         operationArea.setText(operationArea.getText() + "Swap ");
     }//GEN-LAST:event_swapButtonActionPerformed
-/*button to add over operation into the text field of the operation that a custom operation have to do*/
+/**
+ * Button that allows to the user to add over operation into the text field of the operation that a custom operation have to do.
+ * @param evt 
+ */
     private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
         operationArea.setText(operationArea.getText() + "Over ");
     }//GEN-LAST:event_overButtonActionPerformed
-/*list of the custom operation that the user have created before*/
+/**
+ * List of the custom operation that the user have created before.
+ * @param evt 
+ */
     private void NameListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NameListMouseClicked
         String key = NameList.getSelectedValue();
         OperationView.setText(udo.getMap().get(key));
     }//GEN-LAST:event_NameListMouseClicked
-/*button to delete a custom operation*/
+/**
+ * Button that allows to the user to delete a custom operation.
+ * @param evt 
+ */
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
          String key = NameList.getSelectedValue();
          udo.deleteUDO(key);
          this.model.removeElement(key);
          OperationView.setText("");
     }//GEN-LAST:event_deleteButtonActionPerformed
-/*button to modify a custom operation*/
+/**
+ * Button that allows to the user to modify a custom operation.
+ * @param evt 
+ */
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
         String key = NameList.getSelectedValue();
         insertNameField.setText(key);
@@ -443,7 +488,10 @@ public class CustomOperation extends javax.swing.JFrame {
         this.model.removeElement(key);
         OperationView.setText("");
     }//GEN-LAST:event_modifyButtonActionPerformed
-/*button that allows us to reutilize a custom operation as argument of a new custom operation*/
+/**
+ * Button that allows to the user to reutilize a custom operation as argument of a new custom operation.
+ * @param evt 
+ */
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         operationArea.setText(NameList.getSelectedValue() + " ");
     }//GEN-LAST:event_SubmitButtonActionPerformed
