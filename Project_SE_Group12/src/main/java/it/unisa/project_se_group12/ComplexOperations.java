@@ -8,12 +8,11 @@ import static java.lang.Math.sqrt;
 import java.util.Stack;
 
 /**
- *
+ * The class ComplexOperation allows us to manage all the operations with complex number.
+ * e.g. addiction, difference, product, division etc...
+ * (Function are studied to perform with complex number and also with real number)
  * @author PC MSI
  */
-/*The class ComplexOperation allows us to manage all the operations with complex number.
-e.g. addiction, difference, product, division etc...
-(Function are studied to perform with complex number and also with real number) */
 public class ComplexOperations {
     
     //this function create the instance of the class
