@@ -4,7 +4,9 @@
  */
 package it.unisa.project_se_group12;
 
+import java.util.Map;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  * This class allows us to manage the interface that consent at the user to create custom operations.
@@ -62,6 +64,8 @@ public class CustomOperation extends javax.swing.JFrame {
         deleteButton = new javax.swing.JButton();
         modifyButton = new javax.swing.JButton();
         SubmitButton = new javax.swing.JButton();
+        SaveToFileButton = new javax.swing.JButton();
+        LoadFromFileButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,6 +229,8 @@ public class CustomOperation extends javax.swing.JFrame {
         OperationView.setRows(5);
         jScrollPane1.setViewportView(OperationView);
 
+        deleteButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(0, 153, 153));
         deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +238,8 @@ public class CustomOperation extends javax.swing.JFrame {
             }
         });
 
+        modifyButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        modifyButton.setForeground(new java.awt.Color(0, 153, 153));
         modifyButton.setText("Modify");
         modifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,10 +247,30 @@ public class CustomOperation extends javax.swing.JFrame {
             }
         });
 
+        SubmitButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        SubmitButton.setForeground(new java.awt.Color(0, 153, 153));
         SubmitButton.setText("Submit");
         SubmitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubmitButtonActionPerformed(evt);
+            }
+        });
+
+        SaveToFileButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        SaveToFileButton.setForeground(new java.awt.Color(0, 153, 153));
+        SaveToFileButton.setText("Save");
+        SaveToFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveToFileButtonActionPerformed(evt);
+            }
+        });
+
+        LoadFromFileButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        LoadFromFileButton.setForeground(new java.awt.Color(0, 153, 153));
+        LoadFromFileButton.setText("Load");
+        LoadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadFromFileButtonActionPerformed(evt);
             }
         });
 
@@ -290,15 +318,17 @@ public class CustomOperation extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(modifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SubmitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SubmitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(SaveToFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(modifyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LoadFromFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -335,15 +365,20 @@ public class CustomOperation extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(deleteButton)
                                 .addGap(18, 18, 18)
                                 .addComponent(modifyButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(SubmitButton)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(SubmitButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(SaveToFileButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(LoadFromFileButton)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(InsertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -495,6 +530,29 @@ public class CustomOperation extends javax.swing.JFrame {
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         operationArea.setText(NameList.getSelectedValue() + " ");
     }//GEN-LAST:event_SubmitButtonActionPerformed
+/**
+ * The button allows to the user to save the user defined operations in a file.
+ * @param evt 
+ */
+    private void SaveToFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveToFileButtonActionPerformed
+        if(udo.saveToFile()){
+            JOptionPane.showMessageDialog(this, "UDO correctly saved on a file");
+        }else
+            JOptionPane.showMessageDialog(this, "UDO NOT correctly save on a file","ERROR",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_SaveToFileButtonActionPerformed
+/**
+ * The button allows to the user to reload the user defined operation from a file.
+ * @param evt 
+ */
+    private void LoadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadFromFileButtonActionPerformed
+        if(udo.loadFromFile()){
+            for (Map.Entry<String, String> entry : udo.getMap().entrySet()) {
+                model.addElement(entry.getKey());
+            }
+            JOptionPane.showMessageDialog(this, "UDO correctly load from a file");
+        }else
+            JOptionPane.showMessageDialog(this, "UDO NOT correctly load from a file","ERROR",JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_LoadFromFileButtonActionPerformed
 
     
     /**
@@ -537,9 +595,11 @@ public class CustomOperation extends javax.swing.JFrame {
     private javax.swing.JButton AddButton;
     private javax.swing.JButton DiffButton;
     private javax.swing.JButton InsertButton;
+    private javax.swing.JButton LoadFromFileButton;
     private javax.swing.JList<String> NameList;
     private javax.swing.JTextArea OperationView;
     private javax.swing.JButton PerButton;
+    private javax.swing.JButton SaveToFileButton;
     private javax.swing.JButton SubmitButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton deleteButton;

@@ -4,7 +4,14 @@
  */
 package it.unisa.project_se_group12;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 /**
  * this class allows us to manage custom operation that user can create and the structure where they are stored. The attribute of the class is the structure
@@ -12,8 +19,10 @@ import java.util.Set;
  * @author PC MSI
  */
 public class UDO {
-    
+    //C:\\Users\\PC MSI\\Documents\\NetBeansProject\\Project_SE\\Project_SE_Group12_\\Project_SE_Group12\\src\\main\\java\\it\\unisa\\project_se_group12
     HashMap<String, String> map;
+    
+    final static String filePath = new File("udo.txt").getAbsolutePath();
 
     /**
      * create an empty hash map
@@ -108,4 +117,95 @@ public class UDO {
         }
         return true;
     }  
+    
+    public boolean saveToFile(){
+        File file = new File(filePath);
+        BufferedWriter bf = null;
+  
+        try {
+  
+            // create new BufferedWriter for the output file
+            bf = new BufferedWriter(new FileWriter(file));
+  
+            // iterate map entries
+            for (Map.Entry<String, String> entry :
+                 map.entrySet()) {
+  
+                // put key and value separated by a colon
+                bf.write(entry.getKey() + ":"
+                         + entry.getValue());
+  
+                // new line
+                bf.newLine();
+            }
+  
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        finally {
+  
+            try {
+  
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception e) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean loadFromFile(){
+        BufferedReader br = null;
+  
+        try {
+  
+            // create file object
+            File file = new File(filePath);
+  
+            // create BufferedReader object from the File
+            br = new BufferedReader(new FileReader(file));
+  
+            String line = null;
+  
+            // read file line by line
+            while ((line = br.readLine()) != null) {
+  
+                // split the line by :
+                String[] parts = line.split(":");
+  
+                // first part is nameOperation, second is udoOperation
+                String nameOperadion = parts[0].trim();
+                String udoOperation = parts[1].trim();
+  
+                // put name, udo in HashMap if they are
+                // not empty
+                if (!nameOperadion.equals("") && !udoOperation.equals(""))
+                    map.put(nameOperadion, udoOperation);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        finally {
+  
+            // Always close the BufferedReader
+            if (br != null) {
+                try {
+                    br.close();
+                }
+                catch (Exception e) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    
 }
