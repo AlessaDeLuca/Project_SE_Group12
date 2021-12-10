@@ -22,7 +22,12 @@ public class StackManage {
     public StackManage(Stack<ComplexNumbers> stack) {
         this.stack = stack;
     }
- /*insert numbers*/
+    
+    /**
+     * insert numbers
+     * @param real
+     * @param im 
+     */
     public void addIntoStack(String real, String im){
         ComplexNumbers num;
         if (real.isEmpty()){
@@ -41,6 +46,10 @@ public class StackManage {
     /*return stack's size*/
     public int size(){
         return this.stack.size();
+    }
+    
+    public ComplexNumbers peek(){
+        return this.stack.peek();
     }
     /*this function allows us to obtain the last element of the stack*/
     public ComplexNumbers popFromStack(){
@@ -61,20 +70,32 @@ public class StackManage {
        return this.stack.iterator();
     }
     /*this function allows us to duplicate last element into the stack*/
-    public void dupLastElement(){
-        this.stack.push(this.stack.lastElement());
+    public boolean dupLastElement(){
+        if(!this.isEmpty()){
+            this.stack.push(this.stack.lastElement());
+            return true;
+        }else
+            return false;
     }
     /*this function allows us to swap the last value with the value before*/
-    public void swap(){
-        ComplexNumbers num1=this.stack.pop();
-        ComplexNumbers num2=this.stack.pop();
-        this.stack.push(num1);
-        this.stack.push(num2);
+    public boolean swap(){
+        if(this.check2Numbers()){
+            ComplexNumbers num1=this.stack.pop();
+            ComplexNumbers num2=this.stack.pop();
+            this.stack.push(num1);
+            this.stack.push(num2);
+            return true;
+        }else
+            return false;
     }
     /*this function allows us to duplicatethe second-last element into the stack*/
-    public void over(){
-        ComplexNumbers num1=this.stack.get(this.stack.size()-2);
-        this.stack.push(num1);
+    public boolean over(){
+        if(this.check2Numbers()){
+            ComplexNumbers num1=this.stack.get(this.stack.size()-2);
+            this.stack.push(num1);
+            return true;
+        }else
+            return false;
     }
 /*return the stack*/
     public Stack<ComplexNumbers> getStack() {
@@ -82,7 +103,7 @@ public class StackManage {
     }
     
  /*print the stack as a string*/   
-    public String pntStack(){
+    public String printStack(){
         String str="";
         Iterator<ComplexNumbers> iter = stack.iterator();
         
@@ -92,5 +113,92 @@ public class StackManage {
         return str;
     }
         
+    //this function checks that the stack contains at least 2 elements
+    public boolean check2Numbers(){
+        if(this.size()<=1){
+            return false;
+        }else
+            return true;
+    }
     
+    public boolean isEmpty(){
+        if(this.size()<=0){
+            return true;
+        }else
+            return false;
+    }
+    
+    public boolean addOperation(){
+        ComplexOperations op = new ComplexOperations();
+        if(this.check2Numbers()){
+            ComplexNumbers num1 = this.popFromStack();
+            ComplexNumbers num2 = this.popFromStack();
+            ComplexNumbers res = op.add(num1, num2);
+            this.pushtoStack(res);
+            return true;
+        }else
+            return false;
+    }
+    
+    public boolean subOperation(){
+        ComplexOperations op = new ComplexOperations();
+        if(this.check2Numbers()){
+            ComplexNumbers num2 = this.popFromStack();
+            ComplexNumbers num1 = this.popFromStack();
+            ComplexNumbers res = op.subtract(num1, num2);
+            this.pushtoStack(res);
+            return true;
+        }else
+            return false;
+    }
+    
+    public boolean multiplyOperation(){
+        ComplexOperations op = new ComplexOperations();
+        if(this.check2Numbers()){
+            ComplexNumbers num2 = this.popFromStack();
+            ComplexNumbers num1 = this.popFromStack();
+            ComplexNumbers res = op.multiply(num1, num2);
+            this.pushtoStack(res);
+            return true;
+        }else
+            return false;
+    }
+    
+    public boolean divisionOperation(){
+        ComplexOperations op = new ComplexOperations();
+        if(this.check2Numbers()){
+            ComplexNumbers num2 = this.popFromStack();
+            ComplexNumbers num1 = this.popFromStack();
+            if(num1.getReal()==0){
+                return false;
+            }else{
+                ComplexNumbers res = op.divide(num1, num2);
+                this.pushtoStack(res);
+                return true;
+            }
+        }else
+            return false;
+    }
+    
+    public boolean invertSignOperation(){
+       ComplexOperations op = new ComplexOperations();
+        if(!this.isEmpty()){
+            ComplexNumbers num1 = this.popFromStack();
+            ComplexNumbers res = op.invertSign(num1);
+            this.pushtoStack(res);
+            return true;
+        }else
+            return false;
+    }
+    
+    public boolean squareRootOperation(){
+       ComplexOperations op = new ComplexOperations();
+        if(!this.isEmpty()){
+            ComplexNumbers num1 = this.popFromStack();
+            ComplexNumbers res = op.squareRoot(num1);
+            this.pushtoStack(res);
+            return true;
+        }else
+            return false;
+    }
 }
