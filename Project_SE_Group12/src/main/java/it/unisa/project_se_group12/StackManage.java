@@ -8,23 +8,29 @@ import java.util.Iterator;
 import java.util.Stack;
 
 /**
- *
+ * This class Stack allows us to manage the stack where the numbers are stored
  * @author PC MSI
  */
-/*this stack allows us to manage the stack where the numbers are stored*/
 public class StackManage {
     Stack<ComplexNumbers> stack;
-/*create empty stack*/
+
+    /**
+     * create empty stack
+     */
     public StackManage() {
         this.stack= new Stack<ComplexNumbers>();
     }
-/*create stack*/
+    
+    /**
+     * create stack
+     * @param stack
+     */
     public StackManage(Stack<ComplexNumbers> stack) {
         this.stack = stack;
     }
     
     /**
-     * insert numbers
+     * Pushes an item onto the top of this stack. It check if the real part is empty or not, to distinguish the cases.
      * @param real
      * @param im 
      */
@@ -43,33 +49,60 @@ public class StackManage {
 
         this.stack.push(num);
     }
-    /*return stack's size*/
+    
+    /**
+     * Returns the current capacity of this stack.
+     * @return 
+     */
     public int size(){
         return this.stack.size();
     }
     
+    /**
+     * Looks at the object at the top of this stack without removing it from the stack.
+     * @return 
+     */
     public ComplexNumbers peek(){
         return this.stack.peek();
     }
-    /*this function allows us to obtain the last element of the stack*/
+    
+    /**
+     * Returns the last element of the stack.
+     * @return 
+     */
     public ComplexNumbers popFromStack(){
         return this.stack.pop();
     }
-    /*this function allows us to push values into the stack*/
+    
+    /**
+     * This function allows us to push a complex number into the stack.
+     * @param c : ComplexNumbers
+     */
     public void pushtoStack(ComplexNumbers c){
         c.setReal(Math.floor(c.getReal()*Math.pow(10, 8))/Math.pow(10, 8));
         c.setImaginary(Math.floor(c.getImaginary()*Math.pow(10, 8))/Math.pow(10, 8));
         this.stack.push(c);
     }
-    /*this function allows us to clear the stack*/
+    
+    /**
+     * Removes all of the elements from this stack. 
+     */
     public void clearStack(){
        this.stack.clear();
     }
-    /*this function allows us to iterate the stack*/
+    
+    /**
+     * Returns an iterator over the elements in this list in proper sequence.
+     * @return 
+     */
     public Iterator<ComplexNumbers> iteratorStack(){
        return this.stack.iterator();
     }
-    /*this function allows us to duplicate last element into the stack*/
+    
+    /**
+     * This function allows us to duplicate last element into the stack.
+     * @return 
+     */
     public boolean dupLastElement(){
         if(!this.isEmpty()){
             this.stack.push(this.stack.lastElement());
@@ -77,7 +110,11 @@ public class StackManage {
         }else
             return false;
     }
-    /*this function allows us to swap the last value with the value before*/
+   
+    /**
+     * This function allows us to swap the last value with the value before.
+     * @return 
+     */
     public boolean swap(){
         if(this.check2Numbers()){
             ComplexNumbers num1=this.stack.pop();
@@ -88,7 +125,11 @@ public class StackManage {
         }else
             return false;
     }
-    /*this function allows us to duplicatethe second-last element into the stack*/
+    
+    /**
+     * This function allows us to duplicatethe second-last element into the stack
+     * @return 
+     */
     public boolean over(){
         if(this.check2Numbers()){
             ComplexNumbers num1=this.stack.get(this.stack.size()-2);
@@ -97,12 +138,19 @@ public class StackManage {
         }else
             return false;
     }
-/*return the stack*/
+
+    /**
+     * return the stack
+     * @return 
+     */
     public Stack<ComplexNumbers> getStack() {
         return stack;
     }
-    
- /*print the stack as a string*/   
+     
+    /**
+     * Print the stack as a string.
+     * @return 
+     */
     public String printStack(){
         String str="";
         Iterator<ComplexNumbers> iter = stack.iterator();
@@ -113,7 +161,10 @@ public class StackManage {
         return str;
     }
         
-    //this function checks that the stack contains at least 2 elements
+    /**
+     * This function checks if the stack contains at least 2 elements.
+     * @return 
+     */
     public boolean check2Numbers(){
         if(this.size()<=1){
             return false;
@@ -121,6 +172,10 @@ public class StackManage {
             return true;
     }
     
+    /**
+     * This function checks if the stack is empty.
+     * @return 
+     */
     public boolean isEmpty(){
         if(this.size()<=0){
             return true;
@@ -128,6 +183,10 @@ public class StackManage {
             return false;
     }
     
+    /**
+     * This function applies the addition between 2 complex numbers.
+     * @return 
+     */
     public boolean addOperation(){
         ComplexOperations op = new ComplexOperations();
         if(this.check2Numbers()){
@@ -140,6 +199,10 @@ public class StackManage {
             return false;
     }
     
+    /**
+     * This function applies the subtraction between 2 complex numbers.
+     * @return 
+     */
     public boolean subOperation(){
         ComplexOperations op = new ComplexOperations();
         if(this.check2Numbers()){
@@ -152,6 +215,10 @@ public class StackManage {
             return false;
     }
     
+    /**
+     * This function applies the multiplication between 2 complex numbers.
+     * @return 
+     */
     public boolean multiplyOperation(){
         ComplexOperations op = new ComplexOperations();
         if(this.check2Numbers()){
@@ -164,6 +231,10 @@ public class StackManage {
             return false;
     }
     
+    /**
+     * This function applies the division between 2 complex numbers.
+     * @return 
+     */
     public boolean divisionOperation(){
         ComplexOperations op = new ComplexOperations();
         if(this.check2Numbers()){
@@ -180,6 +251,10 @@ public class StackManage {
             return false;
     }
     
+    /**
+     * This function applies the invert sign of a complex numbers.
+     * @return 
+     */
     public boolean invertSignOperation(){
        ComplexOperations op = new ComplexOperations();
         if(!this.isEmpty()){
@@ -191,6 +266,10 @@ public class StackManage {
             return false;
     }
     
+    /**
+     * This function applies the square root of a complex numbers.
+     * @return 
+     */
     public boolean squareRootOperation(){
        ComplexOperations op = new ComplexOperations();
         if(!this.isEmpty()){
