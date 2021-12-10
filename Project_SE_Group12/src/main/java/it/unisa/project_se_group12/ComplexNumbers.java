@@ -8,7 +8,6 @@ package it.unisa.project_se_group12;
  * -double real (that represent the real part of the complex number);
  * -double immaginary (that represent the immaginary part of the complex number).
  * In this class there are also methods to compare, print and obtain class attributes.
- * @author leo
  */
 public class ComplexNumbers {
     private double real;
