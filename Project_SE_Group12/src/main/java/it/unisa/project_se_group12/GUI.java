@@ -4,8 +4,6 @@
  */
 package it.unisa.project_se_group12;
 
-import java.util.Iterator;
-import java.util.Stack;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -24,8 +22,8 @@ public class GUI extends javax.swing.JFrame {
     
     public GUI() {
         initComponents();
-        stack = new StackManage();
-        variables = new Variables();
+        stack = StackSingleton.getStack();
+        variables = VariablesSingleton.getVariables();
         udo = new UDO();
         box = new CustomOperation(udo, model);
         OperationList.setModel(model);
@@ -510,7 +508,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 /*button that allows to the user to push a number from a variable into the stack*/
     private void varSubButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varSubButtonActionPerformed
-        if(stack.size()<=0){
+        if(stack.isEmpty()){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else if(variables.getMap().get(varList.getSelectedItem().toString())== null){
             JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -521,17 +519,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_varSubButtonActionPerformed
 /*button that allows to the user to push a number from the stack into a variable*/
     private void varMajButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varMajButtonActionPerformed
-        if(stack.size()<=0){
+        if(stack.isEmpty()){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             variables.pushIntoVariable(varList.getSelectedItem().toString(), stack);
-            StackArea.setText(printStack());
+            StackArea.setText(stack.printStack());
             variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
         }
     }//GEN-LAST:event_varMajButtonActionPerformed
 /*button to add the value of a variable at a number into the stack*/
     private void varAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_varAddButtonActionPerformed
-        if(stack.size()<=0){
+        if(stack.isEmpty()){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else if(variables.getMap().get(varList.getSelectedItem().toString())== null){
             JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
@@ -546,7 +544,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
         }else {
             variables.pushIntoStack(varList.getSelectedItem().toString(), stack);
-            StackArea.setText(printStack());
+            StackArea.setText(stack.printStack());
             variablesFields.setText("");
         }
     }//GEN-LAST:event_varMinButtonActionPerformed
@@ -560,38 +558,32 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_varListActionPerformed
 /*button for the swap function*/
     private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
-        if(stack.size()<=1){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else{
-            stack.swap();
-            StackArea.setText(printStack());
-        }
+        if(stack.swap()){
+            StackArea.setText(stack.printStack());
+        }else
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);       
     }//GEN-LAST:event_swapButtonActionPerformed
 /*button for the over function*/
     private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
-        if(stack.size()<=1){
+        if(stack.over()){
+            StackArea.setText(stack.printStack());
+        }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else{
-            stack.over();
-            StackArea.setText(printStack());
-        }
     }//GEN-LAST:event_overButtonActionPerformed
 /*button for the dup function*/
     private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
-        if(stack.size()<=0){
+         if(stack.dupLastElement()){
+            StackArea.setText(stack.printStack());
+        }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else{
-            stack.dupLastElement();
-            StackArea.setText(printStack());
-        }
     }//GEN-LAST:event_dupButtonActionPerformed
 /*button for the drop function*/
     private void dropButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dropButtonActionPerformed
-        if(stack.size()<=0){
+        if(stack.isEmpty()){
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             stack.popFromStack();
-            StackArea.setText(printStack());
+            StackArea.setText(stack.printStack());
         }
     }//GEN-LAST:event_dropButtonActionPerformed
 /*button for the clear function*/
@@ -601,73 +593,43 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_clearButtonActionPerformed
 /*button for sqare root function*/
     private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
-        if(stack.size()<=0){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else {
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations().squareRoot(num1);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }
+        if(stack.squareRootOperation()){
+            StackArea.setText(stack.printStack());
+            Result.setText(stack.peek().toString());
+        }else
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);  
     }//GEN-LAST:event_RadButtonActionPerformed
 /*button for invert sign of a number*/
     private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
-        if(stack.size()<=0){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }else{
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations().invertSign(num1);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }
+        if(stack.invertSignOperation()){
+            StackArea.setText(stack.printStack());
+            Result.setText(stack.peek().toString());
+        }else
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);       
     }//GEN-LAST:event_InvertButtonActionPerformed
 /*button for division operation*/
     private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
-        ComplexOperations op = new ComplexOperations();
-        if(op.check2Numbers(stack.getStack())){
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers num1 = stack.popFromStack();
-            if(num1.getReal()==0){
-                JOptionPane.showMessageDialog(this, "Enter a non zero divider","ERROR",JOptionPane.ERROR_MESSAGE);
-            }else{
-                ComplexNumbers res = op.divide(num1, num2);
-                stack.pushtoStack(res);
-                StackArea.setText(printStack());
-                Result.setText(res.toString());
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }
+        if(stack.divisionOperation()){
+            StackArea.setText(stack.printStack());
+            Result.setText(stack.peek().toString());
+        }else
+            JOptionPane.showMessageDialog(this, "Not enough numbers or number not divisible for zero, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_DivButtonActionPerformed
 /*button for product operation*/
     private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
-        ComplexOperations op = new ComplexOperations();
-        if(op.check2Numbers(stack.getStack())){
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers res = op.multiply(num1, num2);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }else{
+        if(stack.multiplyOperation()){
+            StackArea.setText(stack.printStack());
+            Result.setText(stack.peek().toString());
+        }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_PerButtonActionPerformed
 /*button for difference operation*/
     private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
-        ComplexOperations op = new ComplexOperations();
-        if(op.check2Numbers(stack.getStack())){
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers res = new ComplexOperations().subtract(num1, num2);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }else{
+        if(stack.subOperation()){
+            StackArea.setText(stack.printStack());
+            Result.setText(stack.peek().toString());
+        }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_DiffButtonActionPerformed
 /*button to insert numbers into the stack*/
     private void EnterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterButtonActionPerformed
@@ -675,7 +637,7 @@ public class GUI extends javax.swing.JFrame {
         String im = ImPart.getText();
         if(check(real, im)){
             stack.addIntoStack(real, im);
-            StackArea.setText(printStack());
+            StackArea.setText(stack.printStack());
             RealPart.setText("");
             ImPart.setText("");
         }else
@@ -683,17 +645,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_EnterButtonActionPerformed
 /*button for add operation*/
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        ComplexOperations op = new ComplexOperations();
-        if(op.check2Numbers(stack.getStack())){
-            ComplexNumbers num1 = stack.popFromStack();
-            ComplexNumbers num2 = stack.popFromStack();
-            ComplexNumbers res = op.add(num1, num2);
-            stack.pushtoStack(res);
-            StackArea.setText(printStack());
-            Result.setText(res.toString());
-        }else{
-            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }
+        if(stack.addOperation()){
+            StackArea.setText(stack.printStack());
+            Result.setText(stack.peek().toString());
+        }else
+            JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);      
     }//GEN-LAST:event_AddButtonActionPerformed
 /*textfield for the result of an operation*/
     private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
@@ -706,7 +662,7 @@ public class GUI extends javax.swing.JFrame {
             String im = ImPart.getText();
             if(check(real, im)){
                 stack.addIntoStack(real, im);
-                StackArea.setText(printStack());
+                StackArea.setText(stack.printStack());
                 RealPart.setText("");
                 ImPart.setText("");
             }
@@ -723,7 +679,7 @@ public class GUI extends javax.swing.JFrame {
             String im = ImPart.getText();
             if(check(real, im)){
                 stack.addIntoStack(real, im);
-                StackArea.setText(printStack());
+                StackArea.setText(stack.printStack());
                 RealPart.setText("");
                 ImPart.setText("");
             }
@@ -735,8 +691,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_RealPartActionPerformed
 /*button to switch to the custom operation interface*/
     private void customOperationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customOperationButtonActionPerformed
-        box.setVisible(true);
-        
+        box.setVisible(true);       
     }//GEN-LAST:event_customOperationButtonActionPerformed
 /*text field to show to the user the number into a selected variable*/
     private void variablesFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_variablesFieldsActionPerformed
@@ -745,21 +700,13 @@ public class GUI extends javax.swing.JFrame {
 /*list of custom operation that user has already created*/
     private void OperationListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OperationListMouseClicked
         String key = OperationList.getSelectedValue();
-        if(!udo.executeOperation(key, stack, StackArea)){
-            JOptionPane.showMessageDialog(this, "Not enough numbers, the rsult could be wrong!","ERROR",JOptionPane.ERROR_MESSAGE);
-        }
-        StackArea.setText(printStack());
-    }//GEN-LAST:event_OperationListMouseClicked
-/*function to print the stack*/
-    private String printStack(){
-        String str="";
-        Iterator<ComplexNumbers> iter = stack.iteratorStack();
         
-        while(iter.hasNext()){
-            str = str + iter.next().toString() ;
+        if(!udo.executeOperation(key, stack)){
+            JOptionPane.showMessageDialog(this, "Math Error","ERROR",JOptionPane.ERROR_MESSAGE);
         }
-        return str;
-    }
+        StackArea.setText(stack.printStack());
+    }//GEN-LAST:event_OperationListMouseClicked
+
         
     /**
      * @param args the command line arguments
