@@ -24,7 +24,7 @@ public class ComplexOperations {
     /**
      * This function checks if the stack contains at least 2 elements
      * @param stack
-     * @return 
+     * @return true if the check was succesfull, false otherwise.
      */
     public boolean check2Numbers(Stack<ComplexNumbers> stack){
         if(stack.size()<=1){
@@ -35,9 +35,9 @@ public class ComplexOperations {
     
     /**
      * Addition between 2 complex numbers.
-     * @param n1
-     * @param n2
-     * @return 
+     * @param n1 the first complex number
+     * @param n2 the second complex number
+     * @return a ComplexNumbers that represents the result of the addition
      */
     public ComplexNumbers add(ComplexNumbers n1, ComplexNumbers n2){
         return new ComplexNumbers(n1.getReal() + n2.getReal(), n1.getImaginary() + n2.getImaginary());
@@ -45,8 +45,8 @@ public class ComplexOperations {
     
     /**
      * Difference between 2 complex numbers.
-     * @param n1
-     * @param n2
+     * @param n1 the first complex number
+     * @param n2 the second complex number
      * @return 
      */
     public ComplexNumbers subtract(ComplexNumbers n1, ComplexNumbers n2){

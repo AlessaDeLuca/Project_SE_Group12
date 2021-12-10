@@ -5,8 +5,8 @@
 package it.unisa.project_se_group12;
 
 /**
- *
- * @author PC MSI
+ * The implementation of the sigleton pattern for the Variables class
+ * 
  */
 public class VariablesSingleton {
     static private Variables instance = null;

@@ -7,33 +7,50 @@ package it.unisa.project_se_group12;
 import java.util.HashMap;
 import java.util.Set;
 /**
- *
+ * this class allows us to manage custom operation that user can create and the structure where they are stored. The attribute of the class is the structure
+ * that we have described before that is an hash map
  * @author PC MSI
  */
-/*this class allows us to manage custom operation that user can create and
-the structure where they are stored. The attribute of the class is the structure
-that we have described before that is an hash map*/
 public class UDO {
     
     HashMap<String, String> map;
-/*create an empty hash map*/
+
+    /**
+     * create an empty hash map
+     */
     public UDO() {
         this.map = new HashMap<>();
     }
- /*insert into a map a name that we use like a key of the map and a custom operation
-    that is associated to that name*/   
+ 
+    /**
+     * insert into a map a name that we use like a key of the map and a custom operation that is associated to that name
+     * @param name
+     * @param operation 
+     */
     public void insertUDO(String name,String operation){
         this.map.put(name, operation);
     }
-    /*remove an element by key*/
+  
+    /**
+     * remove an element by key
+     * @param name 
+     */
     public void deleteUDO(String name){
         this.map.remove(name);
     }
-    /*return map*/
+   
+    /**
+     * return map
+     * @return 
+     */
     public HashMap<String, String> getMap() {
         return map;
     }
-/*print the hash map as a string*/
+
+    /**
+     * print the hash map as a string
+     * @return 
+     */
     @Override
     public String toString() {
         String str = "";
@@ -44,8 +61,13 @@ public class UDO {
         return str;
     }
     
-    // True = operation completed
-    // False = operation failed
+    /**
+     * True = operation completed
+     * False = operation failed
+     * @param key
+     * @param stack
+     * @return 
+     */
     public boolean executeOperation(String key, StackManage stack){
         String operation = map.get(key);
         String[] step = operation.split(" ");
