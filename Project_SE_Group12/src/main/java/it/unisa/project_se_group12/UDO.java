@@ -16,7 +16,6 @@ import java.util.Set;
 /**
  * this class allows us to manage custom operation that user can create and the structure where they are stored. The attribute of the class is the structure
  * that we have described before that is an hash map
- * @author PC MSI
  */
 public class UDO {
     HashMap<String, String> map;
@@ -83,17 +82,23 @@ public class UDO {
         
         for(int i=0;i<step.length;i++){
             if(step[i].equals("+")){
-                stack.addOperation();
+                if(!stack.addOperation())
+                    return false;
             }else if(step[i].equals("-")){
-                stack.divisionOperation();
+                if(!stack.divisionOperation())
+                    return false;
             }else if(step[i].equals("*")){
-                stack.multiplyOperation();
+                if(!stack.multiplyOperation())
+                    return false;
             }else if(step[i].equals("÷")){
-                stack.divisionOperation();
+                if(!stack.divisionOperation())
+                    return false;
             }else if(step[i].equals("√")){
-                stack.squareRootOperation();
+                if(!stack.squareRootOperation())
+                    return false;
             }else if(step[i].equals("+-")){
-                stack.invertSignOperation();
+                if(!stack.invertSignOperation())
+                    return false;
             }else if(step[i].equals("Clear")){
                 stack.clearStack();
             }else if(step[i].equals("Drop")){
@@ -103,15 +108,17 @@ public class UDO {
                      return false;
                  }
             }else if(step[i].equals("Dup")){
-               stack.dupLastElement();
+               if(!stack.dupLastElement())
+                   return false;
             }else if(step[i].equals("Swap")){
-               stack.swap();
+               if(!stack.swap())
+                   return false;
             }else if(step[i].equals("Over")){
-                stack.over();
+                if(!stack.over())
+                    return false;
             }else if(map.containsKey(step[i])){
                 this.executeOperation(step[i], stack);
-            }else
-                return false;
+            }
         }
         return true;
     }  
