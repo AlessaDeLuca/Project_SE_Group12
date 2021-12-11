@@ -24,7 +24,7 @@ public class GUI extends javax.swing.JFrame {
         variables = VariablesSingleton.getVariables();
         udo = new UDO();
         box = new CustomOperation(udo, model);
-        OperationList.setModel(model);
+        operationList.setModel(model);
     }
 
     /**
@@ -50,8 +50,8 @@ public class GUI extends javax.swing.JFrame {
             Double.class.isInstance(Double.parseDouble(im));
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "Not supported charcters","ERROR",JOptionPane.ERROR_MESSAGE);
-            RealPart.setText("");
-            ImPart.setText("");
+            realPartTextField.setText("");
+            imPartTextField.setText("");
             return false;
         }
         return true; 
@@ -66,21 +66,21 @@ public class GUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        RealPart = new javax.swing.JTextField();
-        ImPart = new javax.swing.JTextField();
+        realPartTextField = new javax.swing.JTextField();
+        imPartTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        Result = new javax.swing.JTextField();
-        AddButton = new javax.swing.JButton();
-        EnterButton = new javax.swing.JButton();
+        result = new javax.swing.JTextField();
+        addButton = new javax.swing.JButton();
+        enterButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        DiffButton = new javax.swing.JButton();
-        PerButton = new javax.swing.JButton();
-        javax.swing.JButton DivButton = new javax.swing.JButton();
-        javax.swing.JButton InvertButton = new javax.swing.JButton();
-        javax.swing.JButton RadButton = new javax.swing.JButton();
+        diffButton = new javax.swing.JButton();
+        multiplyButton = new javax.swing.JButton();
+        javax.swing.JButton divButton = new javax.swing.JButton();
+        javax.swing.JButton invertButton = new javax.swing.JButton();
+        javax.swing.JButton squareRootButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        StackArea = new javax.swing.JTextArea();
+        stackArea = new javax.swing.JTextArea();
         clearButton = new javax.swing.JButton();
         dropButton = new javax.swing.JButton();
         dupButton = new javax.swing.JButton();
@@ -95,7 +95,7 @@ public class GUI extends javax.swing.JFrame {
         variablesFields = new javax.swing.JTextField();
         customOperationButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        OperationList = new javax.swing.JList<>();
+        operationList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,26 +110,26 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Imaginary");
 
-        RealPart.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        RealPart.addActionListener(new java.awt.event.ActionListener() {
+        realPartTextField.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        realPartTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RealPartActionPerformed(evt);
+                realPartTextFieldActionPerformed(evt);
             }
         });
-        RealPart.addKeyListener(new java.awt.event.KeyAdapter() {
+        realPartTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 keyPressedReal(evt);
             }
         });
 
-        ImPart.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        ImPart.setMaximumSize(new java.awt.Dimension(214, 2147483647));
-        ImPart.addActionListener(new java.awt.event.ActionListener() {
+        imPartTextField.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        imPartTextField.setMaximumSize(new java.awt.Dimension(214, 2147483647));
+        imPartTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ImPartActionPerformed(evt);
+                imPartTextFieldActionPerformed(evt);
             }
         });
-        ImPart.addKeyListener(new java.awt.event.KeyAdapter() {
+        imPartTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 keyPressedIM(evt);
             }
@@ -139,30 +139,30 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("+");
 
-        Result.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        Result.addActionListener(new java.awt.event.ActionListener() {
+        result.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        result.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResultActionPerformed(evt);
+                resultActionPerformed(evt);
             }
         });
 
-        AddButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        AddButton.setForeground(new java.awt.Color(0, 153, 153));
-        AddButton.setText("+");
-        AddButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        addButton.setForeground(new java.awt.Color(0, 153, 153));
+        addButton.setText("+");
+        addButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
 
-        EnterButton.setBackground(new java.awt.Color(255, 255, 255));
-        EnterButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        EnterButton.setForeground(new java.awt.Color(0, 153, 153));
-        EnterButton.setText("ENTER");
-        EnterButton.addActionListener(new java.awt.event.ActionListener() {
+        enterButton.setBackground(new java.awt.Color(255, 255, 255));
+        enterButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        enterButton.setForeground(new java.awt.Color(0, 153, 153));
+        enterButton.setText("ENTER");
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnterButtonActionPerformed(evt);
+                enterButtonActionPerformed(evt);
             }
         });
 
@@ -170,54 +170,54 @@ public class GUI extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("j");
 
-        DiffButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        DiffButton.setForeground(new java.awt.Color(0, 153, 153));
-        DiffButton.setText("-");
-        DiffButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        DiffButton.addActionListener(new java.awt.event.ActionListener() {
+        diffButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        diffButton.setForeground(new java.awt.Color(0, 153, 153));
+        diffButton.setText("-");
+        diffButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        diffButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DiffButtonActionPerformed(evt);
+                diffButtonActionPerformed(evt);
             }
         });
 
-        PerButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        PerButton.setForeground(new java.awt.Color(0, 153, 153));
-        PerButton.setText("x");
-        PerButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        PerButton.addActionListener(new java.awt.event.ActionListener() {
+        multiplyButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        multiplyButton.setForeground(new java.awt.Color(0, 153, 153));
+        multiplyButton.setText("x");
+        multiplyButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        multiplyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PerButtonActionPerformed(evt);
+                multiplyButtonActionPerformed(evt);
             }
         });
 
-        DivButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        DivButton.setForeground(new java.awt.Color(0, 153, 153));
-        DivButton.setText("÷");
-        DivButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        DivButton.addActionListener(new java.awt.event.ActionListener() {
+        divButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        divButton.setForeground(new java.awt.Color(0, 153, 153));
+        divButton.setText("÷");
+        divButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        divButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DivButtonActionPerformed(evt);
+                divButtonActionPerformed(evt);
             }
         });
 
-        InvertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        InvertButton.setForeground(new java.awt.Color(0, 153, 153));
-        InvertButton.setText("Invert sign");
-        InvertButton.setActionCommand("-x");
-        InvertButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        InvertButton.addActionListener(new java.awt.event.ActionListener() {
+        invertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        invertButton.setForeground(new java.awt.Color(0, 153, 153));
+        invertButton.setText("Invert sign");
+        invertButton.setActionCommand("-x");
+        invertButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        invertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InvertButtonActionPerformed(evt);
+                invertButtonActionPerformed(evt);
             }
         });
 
-        RadButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
-        RadButton.setForeground(new java.awt.Color(0, 153, 153));
-        RadButton.setText("√");
-        RadButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RadButton.addActionListener(new java.awt.event.ActionListener() {
+        squareRootButton.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
+        squareRootButton.setForeground(new java.awt.Color(0, 153, 153));
+        squareRootButton.setText("√");
+        squareRootButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        squareRootButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadButtonActionPerformed(evt);
+                squareRootButtonActionPerformed(evt);
             }
         });
 
@@ -225,10 +225,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("STACK");
 
-        StackArea.setColumns(20);
-        StackArea.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
-        StackArea.setRows(5);
-        jScrollPane1.setViewportView(StackArea);
+        stackArea.setColumns(20);
+        stackArea.setFont(new java.awt.Font("Tw Cen MT", 2, 18)); // NOI18N
+        stackArea.setRows(5);
+        jScrollPane1.setViewportView(stackArea);
 
         clearButton.setFont(new java.awt.Font("Tw Cen MT", 3, 14)); // NOI18N
         clearButton.setForeground(new java.awt.Color(0, 153, 153));
@@ -340,14 +340,14 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        OperationList.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        OperationList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        OperationList.addMouseListener(new java.awt.event.MouseAdapter() {
+        operationList.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        operationList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        operationList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                OperationListMouseClicked(evt);
+                operationListMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(OperationList);
+        jScrollPane2.setViewportView(operationList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -357,24 +357,24 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(88, 88, 88)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DiffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(diffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(RadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(squareRootButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(PerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(multiplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(divButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
-                                .addComponent(InvertButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(RealPart, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(invertButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(realPartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(54, 54, 54)
                         .addComponent(jLabel3))
-                    .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(result, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,11 +382,11 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ImPart, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imPartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 76, Short.MAX_VALUE)
                         .addComponent(jLabel4)
                         .addGap(27, 27, 27)
-                        .addComponent(EnterButton)
+                        .addComponent(enterButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,11 +432,11 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(ImPart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(imPartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4)
-                                .addComponent(EnterButton))
+                                .addComponent(enterButton))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(RealPart, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(realPartTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel3)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(varMajButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,19 +447,19 @@ public class GUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(AddButton)
-                                                .addComponent(DiffButton))
+                                                .addComponent(addButton)
+                                                .addComponent(diffButton))
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(RadButton)
+                                                .addComponent(squareRootButton)
                                                 .addComponent(varMinButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(6, 6, 6)
                                         .addComponent(varAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(52, 52, 52)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(DivButton)
-                                            .addComponent(PerButton))))
+                                            .addComponent(invertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(divButton)
+                                            .addComponent(multiplyButton))))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(22, 22, 22)
@@ -474,7 +474,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(variablesFields, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Result, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(result, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(customOperationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -529,7 +529,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             variables.pushIntoVariable(varList.getSelectedItem().toString(), stack);
-            StackArea.setText(stack.printStack());
+            stackArea.setText(stack.printStack());
             variablesFields.setText(variables.getMap().get(varList.getSelectedItem().toString()).toString());
         }
     }//GEN-LAST:event_varMajButtonActionPerformed
@@ -556,7 +556,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Variable not initialized","ERROR",JOptionPane.ERROR_MESSAGE);
         }else {
             variables.pushIntoStack(varList.getSelectedItem().toString(), stack);
-            StackArea.setText(stack.printStack());
+            stackArea.setText(stack.printStack());
             variablesFields.setText("");
         }
     }//GEN-LAST:event_varMinButtonActionPerformed
@@ -577,7 +577,7 @@ public class GUI extends javax.swing.JFrame {
  */
     private void swapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swapButtonActionPerformed
         if(stack.swap()){
-            StackArea.setText(stack.printStack());
+            stackArea.setText(stack.printStack());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);       
     }//GEN-LAST:event_swapButtonActionPerformed
@@ -587,7 +587,7 @@ public class GUI extends javax.swing.JFrame {
  */
     private void overButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overButtonActionPerformed
         if(stack.over()){
-            StackArea.setText(stack.printStack());
+            stackArea.setText(stack.printStack());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_overButtonActionPerformed
@@ -597,7 +597,7 @@ public class GUI extends javax.swing.JFrame {
  */
     private void dupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dupButtonActionPerformed
          if(stack.dupLastElement()){
-            StackArea.setText(stack.printStack());
+            stackArea.setText(stack.printStack());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_dupButtonActionPerformed
@@ -610,7 +610,7 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
         }else{
             stack.popFromStack();
-            StackArea.setText(stack.printStack());
+            stackArea.setText(stack.printStack());
         }
     }//GEN-LAST:event_dropButtonActionPerformed
 /**
@@ -619,109 +619,109 @@ public class GUI extends javax.swing.JFrame {
  */
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         stack.clearStack();
-        StackArea.setText("");
+        stackArea.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
 /**
  * Button that allows to the user to use sqare root operation.
  * @param evt 
  */
-    private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
+    private void squareRootButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_squareRootButtonActionPerformed
         if(stack.squareRootOperation()){
-            StackArea.setText(stack.printStack());
-            Result.setText(stack.peek().toString());
+            stackArea.setText(stack.printStack());
+            result.setText(stack.peek().toString());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);  
-    }//GEN-LAST:event_RadButtonActionPerformed
+    }//GEN-LAST:event_squareRootButtonActionPerformed
 /**
  * Button that allows to the user to invert sign of a number.
  * @param evt 
  */
-    private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
+    private void invertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertButtonActionPerformed
         if(stack.invertSignOperation()){
-            StackArea.setText(stack.printStack());
-            Result.setText(stack.peek().toString());
+            stackArea.setText(stack.printStack());
+            result.setText(stack.peek().toString());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);       
-    }//GEN-LAST:event_InvertButtonActionPerformed
+    }//GEN-LAST:event_invertButtonActionPerformed
 /**
  * Button that allows to the user to use division operation.
  * @param evt 
  */
-    private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
+    private void divButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divButtonActionPerformed
         if(stack.divisionOperation()){
-            StackArea.setText(stack.printStack());
-            Result.setText(stack.peek().toString());
+            stackArea.setText(stack.printStack());
+            result.setText(stack.peek().toString());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers or number not divisible for zero, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_DivButtonActionPerformed
+    }//GEN-LAST:event_divButtonActionPerformed
 /**
  * Button that allows to the user to use product operation.
  * @param evt 
  */
-    private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
+    private void multiplyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyButtonActionPerformed
         if(stack.multiplyOperation()){
-            StackArea.setText(stack.printStack());
-            Result.setText(stack.peek().toString());
+            stackArea.setText(stack.printStack());
+            result.setText(stack.peek().toString());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_PerButtonActionPerformed
+    }//GEN-LAST:event_multiplyButtonActionPerformed
 /**
  * Button that allows to the user to use difference operation.
  * @param evt 
  */
-    private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
+    private void diffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diffButtonActionPerformed
         if(stack.subOperation()){
-            StackArea.setText(stack.printStack());
-            Result.setText(stack.peek().toString());
+            stackArea.setText(stack.printStack());
+            result.setText(stack.peek().toString());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_DiffButtonActionPerformed
+    }//GEN-LAST:event_diffButtonActionPerformed
 /**
  * Button that allows to the user to insert numbers onto the stack.
  * @param evt 
  */
-    private void EnterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnterButtonActionPerformed
-        String real = RealPart.getText();
-        String im = ImPart.getText();
+    private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
+        String real = realPartTextField.getText();
+        String im = imPartTextField.getText();
         if(check(real, im)){
             stack.addIntoStack(real, im);
-            StackArea.setText(stack.printStack());
-            RealPart.setText("");
-            ImPart.setText("");
+            stackArea.setText(stack.printStack());
+            realPartTextField.setText("");
+            imPartTextField.setText("");
         }else
         JOptionPane.showMessageDialog(this, "Enter a valid Number","ERROR",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_EnterButtonActionPerformed
+    }//GEN-LAST:event_enterButtonActionPerformed
 /**
  * Button that allows to the user to use add operation.
  * @param evt 
  */
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         if(stack.addOperation()){
-            StackArea.setText(stack.printStack());
-            Result.setText(stack.peek().toString());
+            stackArea.setText(stack.printStack());
+            result.setText(stack.peek().toString());
         }else
             JOptionPane.showMessageDialog(this, "Not enough numbers, insert another number!","ERROR",JOptionPane.ERROR_MESSAGE);      
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }//GEN-LAST:event_addButtonActionPerformed
 /**
  * Textfield that allows to the user to view the result of an operation.
  * @param evt 
  */
-    private void ResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResultActionPerformed
+    private void resultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ResultActionPerformed
+    }//GEN-LAST:event_resultActionPerformed
 /**
  * Function that allows to the user to insert imaginary part of a complex number from keyboard.
  * @param evt 
  */
     private void keyPressedIM(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedIM
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            String real = RealPart.getText();
-            String im = ImPart.getText();
+            String real = realPartTextField.getText();
+            String im = imPartTextField.getText();
             if(check(real, im)){
                 stack.addIntoStack(real, im);
-                StackArea.setText(stack.printStack());
-                RealPart.setText("");
-                ImPart.setText("");
+                stackArea.setText(stack.printStack());
+                realPartTextField.setText("");
+                imPartTextField.setText("");
             }
         }
     }//GEN-LAST:event_keyPressedIM
@@ -729,22 +729,22 @@ public class GUI extends javax.swing.JFrame {
  * Textfield that allows to the user to insert the imaginary part of a complex number.
  * @param evt 
  */
-    private void ImPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImPartActionPerformed
+    private void imPartTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imPartTextFieldActionPerformed
 
-    }//GEN-LAST:event_ImPartActionPerformed
+    }//GEN-LAST:event_imPartTextFieldActionPerformed
 /**
  * Function that allows to the user to insert real part of a complex number from keyboard.
  * @param evt 
  */
     private void keyPressedReal(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedReal
         if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            String real = RealPart.getText();
-            String im = ImPart.getText();
+            String real = realPartTextField.getText();
+            String im = imPartTextField.getText();
             if(check(real, im)){
                 stack.addIntoStack(real, im);
-                StackArea.setText(stack.printStack());
-                RealPart.setText("");
-                ImPart.setText("");
+                stackArea.setText(stack.printStack());
+                realPartTextField.setText("");
+                imPartTextField.setText("");
             }
         }
     }//GEN-LAST:event_keyPressedReal
@@ -752,9 +752,9 @@ public class GUI extends javax.swing.JFrame {
  * Textfield that allows to the user to insert the real part of a complex number.
  * @param evt 
  */
-    private void RealPartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RealPartActionPerformed
+    private void realPartTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_realPartTextFieldActionPerformed
 
-    }//GEN-LAST:event_RealPartActionPerformed
+    }//GEN-LAST:event_realPartTextFieldActionPerformed
 /**
  * Button that allows to the user to to switch to the custom operation interface.
  * @param evt 
@@ -773,14 +773,14 @@ public class GUI extends javax.swing.JFrame {
  * List of a custom operation that user has already created.
  * @param evt 
  */
-    private void OperationListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OperationListMouseClicked
-        String key = OperationList.getSelectedValue();
+    private void operationListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_operationListMouseClicked
+        String key = operationList.getSelectedValue();
         
         if(!udo.executeOperation(key, stack)){
             JOptionPane.showMessageDialog(this, "Math Error","ERROR",JOptionPane.ERROR_MESSAGE);
         }
-        StackArea.setText(stack.printStack());
-    }//GEN-LAST:event_OperationListMouseClicked
+        stackArea.setText(stack.printStack());
+    }//GEN-LAST:event_operationListMouseClicked
 
         
     /**
@@ -820,19 +820,14 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddButton;
-    private javax.swing.JButton DiffButton;
-    private javax.swing.JButton EnterButton;
-    private javax.swing.JTextField ImPart;
-    private javax.swing.JList<String> OperationList;
-    private javax.swing.JButton PerButton;
-    private javax.swing.JTextField RealPart;
-    private javax.swing.JTextField Result;
-    private javax.swing.JTextArea StackArea;
+    private javax.swing.JButton addButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton customOperationButton;
+    private javax.swing.JButton diffButton;
     private javax.swing.JButton dropButton;
     private javax.swing.JButton dupButton;
+    private javax.swing.JButton enterButton;
+    private javax.swing.JTextField imPartTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -842,7 +837,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton multiplyButton;
+    private javax.swing.JList<String> operationList;
     private javax.swing.JButton overButton;
+    private javax.swing.JTextField realPartTextField;
+    private javax.swing.JTextField result;
+    private javax.swing.JTextArea stackArea;
     private javax.swing.JButton swapButton;
     private javax.swing.JButton varAddButton;
     private javax.swing.JComboBox<String> varList;
