@@ -19,19 +19,7 @@ public class ComplexOperations {
      */
     public ComplexOperations() {
     }
-    
-    /**
-     * This function checks if the stack contains at least 2 elements
-     * @param stack
-     * @return true if the check was succesfull, false otherwise.
-     */
-    public boolean check2Numbers(Stack<ComplexNumbers> stack){
-        if(stack.size()<=1){
-            return false;
-        }else
-            return true;
-    }
-    
+      
     /**
      * Addition between 2 complex numbers.
      * @param n1 the first complex number
