@@ -19,7 +19,6 @@ import java.util.Set;
  * @author PC MSI
  */
 public class UDO {
-    //C:\\Users\\PC MSI\\Documents\\NetBeansProject\\Project_SE\\Project_SE_Group12_\\Project_SE_Group12\\src\\main\\java\\it\\unisa\\project_se_group12
     HashMap<String, String> map;
     
     final static String filePath = new File("udo.txt").getAbsolutePath();
@@ -33,8 +32,8 @@ public class UDO {
  
     /**
      * insert into a map a name that we use like a key of the map and a custom operation that is associated to that name
-     * @param name
-     * @param operation 
+     * @param name name of the UDO
+     * @param operation User Defined Operation
      */
     public void insertUDO(String name,String operation){
         this.map.put(name, operation);
@@ -42,7 +41,7 @@ public class UDO {
   
     /**
      * remove an element by key
-     * @param name 
+     * @param name name of the UDO
      */
     public void deleteUDO(String name){
         this.map.remove(name);
@@ -50,7 +49,7 @@ public class UDO {
    
     /**
      * return map
-     * @return 
+     * @return an HashMap
      */
     public HashMap<String, String> getMap() {
         return map;
@@ -58,7 +57,7 @@ public class UDO {
 
     /**
      * print the hash map as a string
-     * @return 
+     * @return a string
      */
     @Override
     public String toString() {
@@ -71,11 +70,10 @@ public class UDO {
     }
     
     /**
-     * True = operation completed
-     * False = operation failed
-     * @param key
-     * @param stack
-     * @return 
+     * The function allows to execute custom UDO operation
+     * @param key UDO's name
+     * @param stack GUI's stack
+     * @return true if the the operation is correctly execute, false otherwise
      */
     public boolean executeOperation(String key, StackManage stack){
         String operation = map.get(key);
@@ -118,6 +116,10 @@ public class UDO {
         return true;
     }  
     
+    /**
+     * The funtion allows to save the user defined operations in a file
+     * @return true if the file is correctly saved, false otherwise
+     */
     public boolean saveToFile(){
         File file = new File(filePath);
         BufferedWriter bf = null;
@@ -159,6 +161,10 @@ public class UDO {
         return true;
     }
     
+    /**
+     * The function allows to load the user defined operations from a file
+     * @return true if the file is correctly saved, false otherwise
+     */
     public boolean loadFromFile(){
         BufferedReader br = null;
   

@@ -11,7 +11,6 @@ import java.util.Stack;
  * The class ComplexOperation allows us to manage all the operations with complex number.
  * e.g. addiction, difference, product, division etc...
  * (Function are studied to perform with complex number and also with real number)
- * @author PC MSI
  */
 public class ComplexOperations {
     
@@ -47,7 +46,7 @@ public class ComplexOperations {
      * Difference between 2 complex numbers.
      * @param n1 the first complex number
      * @param n2 the second complex number
-     * @return 
+     * @return a ComplexNumbers that represents the result of the subtraction
      */
     public ComplexNumbers subtract(ComplexNumbers n1, ComplexNumbers n2){
         return new ComplexNumbers(n1.getReal() - n2.getReal(), n1.getImaginary() - n2.getImaginary());
@@ -57,7 +56,7 @@ public class ComplexOperations {
      * Product between 2 complex numbers.
      * @param n1
      * @param n2
-     * @return 
+     * @return a ComplexNumbers that represents the result of the multiplication
      */
     public ComplexNumbers multiply(ComplexNumbers n1, ComplexNumbers n2){
         double _real = n1.getReal() * n2.getReal() - n1.getImaginary() *n2.getImaginary();
@@ -69,7 +68,7 @@ public class ComplexOperations {
      * Division between 2 complex numbers.
      * @param n1
      * @param n2
-     * @return 
+     * @return a ComplexNumbers that represents the result of the division
      */
     public ComplexNumbers divide(ComplexNumbers n1, ComplexNumbers n2){
         ComplexNumbers output = multiply(n1, conjugate(n2));
@@ -83,7 +82,7 @@ public class ComplexOperations {
      * the module of the real part of the starting number and theta is equals to arctangent of the imaginary part of the starting number over the real part of the starting 
      * number.
      * @param n1
-     * @return 
+     * @return a ComplexNumbers that represents the result of the square root
      */
    public ComplexNumbers squareRootComplex(ComplexNumbers n1){
        double r=Math.sqrt(mod(n1));
@@ -98,7 +97,7 @@ public class ComplexOperations {
    /**
     * This function allows to conjugate of a complex number.
     * @param n1
-    * @return 
+    * @return a ComplexNumbers that represents the result of the conjugate
     */
     public ComplexNumbers conjugate(ComplexNumbers n1){
         return new ComplexNumbers(n1.getReal(),-n1.getImaginary());
@@ -107,7 +106,7 @@ public class ComplexOperations {
     /**
      * This function allows to invert sign of a complex number.
      * @param n1
-     * @return 
+     * @return a ComplexNumbers that represents the result of the invertSign
      */
     public ComplexNumbers invertSign(ComplexNumbers n1){
         if(n1.getImaginary()==0 && n1.getReal()!=0){
@@ -118,10 +117,10 @@ public class ComplexOperations {
     }
     
     /**
-     * This function check if the number is real. If is a negative real number or a complex numberthen invoke the function squareRootComplex instead if is a positive
+     * This function check if the number is real. If is a negative real number or a complex number, then invoke the function squareRootComplex instead if is a positive
      * real number returns sqrt(real number).
      * @param n1
-     * @return 
+     * @return a ComplexNumbers that represents the result of the squareRoot of a real number
      */
     public ComplexNumbers squareRoot(ComplexNumbers n1){
         ComplexNumbers n;
@@ -139,7 +138,7 @@ public class ComplexOperations {
     /**
      * This function allows to obtain a module of a complex number.
      * @param n1
-     * @return 
+     * @return a double that represents the result of the module
      */
     public double mod(ComplexNumbers n1){
         return Math.sqrt(Math.pow(n1.getReal(),2) + Math.pow(n1.getImaginary(),2));

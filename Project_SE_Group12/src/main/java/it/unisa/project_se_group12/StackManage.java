@@ -8,8 +8,7 @@ import java.util.Iterator;
 import java.util.Stack;
 
 /**
- * This class Stack allows us to manage the stack where the numbers are stored
- * @author PC MSI
+ * This class Stack allows us to manage the stack where the numbers are stored.
  */
 public class StackManage {
     Stack<ComplexNumbers> stack;
@@ -31,8 +30,8 @@ public class StackManage {
     
     /**
      * Pushes an item onto the top of this stack. It check if the real part is empty or not, to distinguish the cases.
-     * @param real
-     * @param im 
+     * @param real real part of a ComplexNumbers
+     * @param im imaginary part of a ComplexNumbers
      */
     public void addIntoStack(String real, String im){
         ComplexNumbers num;
@@ -101,7 +100,7 @@ public class StackManage {
     
     /**
      * This function allows us to duplicate last element into the stack.
-     * @return 
+     * @return true if the operation was succesfull, false otherwise
      */
     public boolean dupLastElement(){
         if(!this.isEmpty()){
@@ -113,7 +112,7 @@ public class StackManage {
    
     /**
      * This function allows us to swap the last value with the value before.
-     * @return 
+     * @return true if the operation was succesfull, false otherwise.
      */
     public boolean swap(){
         if(this.check2Numbers()){
@@ -128,7 +127,7 @@ public class StackManage {
     
     /**
      * This function allows us to duplicatethe second-last element into the stack
-     * @return 
+     * @return true if the operation was succesfull, false otherwise.
      */
     public boolean over(){
         if(this.check2Numbers()){
@@ -141,7 +140,7 @@ public class StackManage {
 
     /**
      * return the stack
-     * @return 
+     * @return a stack of COmplexNumbers
      */
     public Stack<ComplexNumbers> getStack() {
         return stack;
@@ -149,7 +148,7 @@ public class StackManage {
      
     /**
      * Print the stack as a string.
-     * @return 
+     * @return a string containing the content of the stack
      */
     public String printStack(){
         String str="";
@@ -163,7 +162,7 @@ public class StackManage {
         
     /**
      * This function checks if the stack contains at least 2 elements.
-     * @return 
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean check2Numbers(){
         if(this.size()<=1){
@@ -174,7 +173,7 @@ public class StackManage {
     
     /**
      * This function checks if the stack is empty.
-     * @return 
+     * @return if the the stack is empty, false otherwise.
      */
     public boolean isEmpty(){
         if(this.size()<=0){
@@ -184,8 +183,8 @@ public class StackManage {
     }
     
     /**
-     * This function applies the addition between 2 complex numbers.
-     * @return 
+     * This function applies the addition between 2 ComplexNumbers.
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean addOperation(){
         ComplexOperations op = new ComplexOperations();
@@ -200,8 +199,8 @@ public class StackManage {
     }
     
     /**
-     * This function applies the subtraction between 2 complex numbers.
-     * @return 
+     * This function applies the subtraction between 2 ComplexNumbers.
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean subOperation(){
         ComplexOperations op = new ComplexOperations();
@@ -216,8 +215,8 @@ public class StackManage {
     }
     
     /**
-     * This function applies the multiplication between 2 complex numbers.
-     * @return 
+     * This function applies the multiplication between 2 ComplexNumbers.
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean multiplyOperation(){
         ComplexOperations op = new ComplexOperations();
@@ -232,8 +231,8 @@ public class StackManage {
     }
     
     /**
-     * This function applies the division between 2 complex numbers.
-     * @return 
+     * This function applies the division between 2 ComplexNumbers.
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean divisionOperation(){
         ComplexOperations op = new ComplexOperations();
@@ -252,8 +251,8 @@ public class StackManage {
     }
     
     /**
-     * This function applies the invert sign of a complex numbers.
-     * @return 
+     * This function applies the invert sign of a ComplexNumbers
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean invertSignOperation(){
        ComplexOperations op = new ComplexOperations();
@@ -267,8 +266,8 @@ public class StackManage {
     }
     
     /**
-     * This function applies the square root of a complex numbers.
-     * @return 
+     * This function applies the square root of a ComplexNumbers
+     * @return true if the check was succesfull, false otherwise
      */
     public boolean squareRootOperation(){
        ComplexOperations op = new ComplexOperations();

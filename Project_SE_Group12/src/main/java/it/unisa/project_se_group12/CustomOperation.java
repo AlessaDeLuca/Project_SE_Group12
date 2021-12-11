@@ -10,7 +10,6 @@ import javax.swing.JOptionPane;
 
 /**
  * This class allows us to manage the interface that consent at the user to create custom operations.
- * @author PC MSI
  */
 public class CustomOperation extends javax.swing.JFrame {
     UDO udo;
@@ -18,7 +17,7 @@ public class CustomOperation extends javax.swing.JFrame {
     /**
      * Creates new form CustomOperation
      * @param udo : User Defined Operation
-     * @param model : 
+     * @param model : default model used for JList component
      */
     public CustomOperation(UDO udo, DefaultListModel<String> model) {
         initComponents();

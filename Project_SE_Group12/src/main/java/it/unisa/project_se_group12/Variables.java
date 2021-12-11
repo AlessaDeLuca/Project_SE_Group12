@@ -9,7 +9,6 @@ import java.util.HashMap;
 /**
  * this class allows us to manage variables and the structure where they are stored. The attributes of this class are the structure 
  * (another hash map) and a string that contains all possible alphabetic variable
- * @author PC MSI
  */
 public class Variables {
     HashMap<String, ComplexNumbers> map = new HashMap<>();
@@ -26,7 +25,7 @@ public class Variables {
  
     /**
      * return map
-     * @return 
+     * @return HashMap
      */
     public HashMap<String, ComplexNumbers> getMap() {
         return map;
@@ -34,8 +33,8 @@ public class Variables {
  
     /**
      * push value from stack into a variable
-     * @param varKey
-     * @param stack 
+     * @param varKey the key of the Variables
+     * @param stack stack into push
      */
     public void pushIntoVariable(String varKey, StackManage stack){
         this.map.replace(varKey, stack.popFromStack());
@@ -43,8 +42,8 @@ public class Variables {
 
     /**
      * push variable from variable into stack
-     * @param varKey
-     * @param stack 
+     * @param varKey the key of the Variables
+     * @param stack stack into push
      */
     public void pushIntoStack(String varKey, StackManage stack){
         stack.getStack().push(this.map.get(varKey));
@@ -53,8 +52,8 @@ public class Variables {
  
     /**
      * add the value into the variable with the last value of the stack
-     * @param varKey
-     * @param stack 
+     * @param varKey the key of the Variables
+     * @param stack stack into push
      */
     public void addWithStack(String varKey, StackManage stack){
         ComplexNumbers stackNum = stack.getStack().lastElement();
@@ -64,8 +63,8 @@ public class Variables {
  
     /**
      * subtract the value of a variable at the last value of the stack
-     * @param varKey
-     * @param stack 
+     * @param varKey the key of the Variables
+     * @param stack stack into push
      */
     public void subWithStack(String varKey, StackManage stack){
         ComplexNumbers stackNum = stack.getStack().lastElement();
