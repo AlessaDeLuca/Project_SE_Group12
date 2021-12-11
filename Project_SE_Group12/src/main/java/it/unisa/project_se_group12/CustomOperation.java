@@ -24,7 +24,7 @@ public class CustomOperation extends javax.swing.JFrame {
         this.udo = udo;
         this.model = model;
         setDefaultCloseOperation(CustomOperation.DISPOSE_ON_CLOSE);
-        NameList.setModel(this.model);
+        nameList.setModel(this.model);
     }
 
     /**
@@ -42,13 +42,13 @@ public class CustomOperation extends javax.swing.JFrame {
         insertNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        InsertButton = new javax.swing.JButton();
-        AddButton = new javax.swing.JButton();
-        DiffButton = new javax.swing.JButton();
-        PerButton = new javax.swing.JButton();
-        javax.swing.JButton DivButton = new javax.swing.JButton();
-        javax.swing.JButton RadButton = new javax.swing.JButton();
-        javax.swing.JButton InvertButton = new javax.swing.JButton();
+        insertButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        diffButton = new javax.swing.JButton();
+        multiplyButton = new javax.swing.JButton();
+        javax.swing.JButton divButton = new javax.swing.JButton();
+        javax.swing.JButton squareRootButton = new javax.swing.JButton();
+        javax.swing.JButton invertButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         dropButton = new javax.swing.JButton();
         dupButton = new javax.swing.JButton();
@@ -57,14 +57,14 @@ public class CustomOperation extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         operationArea = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        NameList = new javax.swing.JList<>();
+        nameList = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        OperationView = new javax.swing.JTextArea();
+        operationView = new javax.swing.JTextArea();
         deleteButton = new javax.swing.JButton();
         modifyButton = new javax.swing.JButton();
-        SubmitButton = new javax.swing.JButton();
-        SaveToFileButton = new javax.swing.JButton();
-        LoadFromFileButton = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
+        saveToFileButton = new javax.swing.JButton();
+        loadFromFileButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,76 +92,76 @@ public class CustomOperation extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("New Operations");
 
-        InsertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        InsertButton.setForeground(new java.awt.Color(0, 153, 153));
-        InsertButton.setText("INSERT");
-        InsertButton.addActionListener(new java.awt.event.ActionListener() {
+        insertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        insertButton.setForeground(new java.awt.Color(0, 153, 153));
+        insertButton.setText("INSERT");
+        insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertButtonActionPerformed(evt);
+                insertButtonActionPerformed(evt);
             }
         });
 
-        AddButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        AddButton.setForeground(new java.awt.Color(0, 153, 153));
-        AddButton.setText("+");
-        AddButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        addButton.setForeground(new java.awt.Color(0, 153, 153));
+        addButton.setText("+");
+        addButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
+                addButtonActionPerformed(evt);
             }
         });
 
-        DiffButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        DiffButton.setForeground(new java.awt.Color(0, 153, 153));
-        DiffButton.setText("-");
-        DiffButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        DiffButton.setPreferredSize(new java.awt.Dimension(15, 23));
-        DiffButton.addActionListener(new java.awt.event.ActionListener() {
+        diffButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        diffButton.setForeground(new java.awt.Color(0, 153, 153));
+        diffButton.setText("-");
+        diffButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        diffButton.setPreferredSize(new java.awt.Dimension(15, 23));
+        diffButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DiffButtonActionPerformed(evt);
+                diffButtonActionPerformed(evt);
             }
         });
 
-        PerButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        PerButton.setForeground(new java.awt.Color(0, 153, 153));
-        PerButton.setText("x");
-        PerButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        PerButton.setPreferredSize(new java.awt.Dimension(15, 23));
-        PerButton.addActionListener(new java.awt.event.ActionListener() {
+        multiplyButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        multiplyButton.setForeground(new java.awt.Color(0, 153, 153));
+        multiplyButton.setText("x");
+        multiplyButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        multiplyButton.setPreferredSize(new java.awt.Dimension(15, 23));
+        multiplyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PerButtonActionPerformed(evt);
+                multiplyButtonActionPerformed(evt);
             }
         });
 
-        DivButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        DivButton.setForeground(new java.awt.Color(0, 153, 153));
-        DivButton.setText("÷");
-        DivButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        DivButton.addActionListener(new java.awt.event.ActionListener() {
+        divButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        divButton.setForeground(new java.awt.Color(0, 153, 153));
+        divButton.setText("÷");
+        divButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        divButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DivButtonActionPerformed(evt);
+                divButtonActionPerformed(evt);
             }
         });
 
-        RadButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
-        RadButton.setForeground(new java.awt.Color(0, 153, 153));
-        RadButton.setText("√");
-        RadButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        RadButton.setPreferredSize(new java.awt.Dimension(15, 23));
-        RadButton.addActionListener(new java.awt.event.ActionListener() {
+        squareRootButton.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        squareRootButton.setForeground(new java.awt.Color(0, 153, 153));
+        squareRootButton.setText("√");
+        squareRootButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        squareRootButton.setPreferredSize(new java.awt.Dimension(15, 23));
+        squareRootButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RadButtonActionPerformed(evt);
+                squareRootButtonActionPerformed(evt);
             }
         });
 
-        InvertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        InvertButton.setForeground(new java.awt.Color(0, 153, 153));
-        InvertButton.setText("+-");
-        InvertButton.setActionCommand("-x");
-        InvertButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        InvertButton.addActionListener(new java.awt.event.ActionListener() {
+        invertButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        invertButton.setForeground(new java.awt.Color(0, 153, 153));
+        invertButton.setText("+-");
+        invertButton.setActionCommand("-x");
+        invertButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        invertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InvertButtonActionPerformed(evt);
+                invertButtonActionPerformed(evt);
             }
         });
 
@@ -215,18 +215,18 @@ public class CustomOperation extends javax.swing.JFrame {
         operationArea.setRows(5);
         jScrollPane2.setViewportView(operationArea);
 
-        NameList.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        NameList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        NameList.addMouseListener(new java.awt.event.MouseAdapter() {
+        nameList.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        nameList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        nameList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NameListMouseClicked(evt);
+                nameListMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(NameList);
+        jScrollPane3.setViewportView(nameList);
 
-        OperationView.setColumns(20);
-        OperationView.setRows(5);
-        jScrollPane1.setViewportView(OperationView);
+        operationView.setColumns(20);
+        operationView.setRows(5);
+        jScrollPane1.setViewportView(operationView);
 
         deleteButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(0, 153, 153));
@@ -246,30 +246,30 @@ public class CustomOperation extends javax.swing.JFrame {
             }
         });
 
-        SubmitButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        SubmitButton.setForeground(new java.awt.Color(0, 153, 153));
-        SubmitButton.setText("Submit");
-        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        submitButton.setForeground(new java.awt.Color(0, 153, 153));
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SubmitButtonActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
-        SaveToFileButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        SaveToFileButton.setForeground(new java.awt.Color(0, 153, 153));
-        SaveToFileButton.setText("Save");
-        SaveToFileButton.addActionListener(new java.awt.event.ActionListener() {
+        saveToFileButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        saveToFileButton.setForeground(new java.awt.Color(0, 153, 153));
+        saveToFileButton.setText("Save");
+        saveToFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveToFileButtonActionPerformed(evt);
+                saveToFileButtonActionPerformed(evt);
             }
         });
 
-        LoadFromFileButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
-        LoadFromFileButton.setForeground(new java.awt.Color(0, 153, 153));
-        LoadFromFileButton.setText("Load");
-        LoadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
+        loadFromFileButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
+        loadFromFileButton.setForeground(new java.awt.Color(0, 153, 153));
+        loadFromFileButton.setText("Load");
+        loadFromFileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoadFromFileButtonActionPerformed(evt);
+                loadFromFileButtonActionPerformed(evt);
             }
         });
 
@@ -287,15 +287,15 @@ public class CustomOperation extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(DiffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(diffButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(PerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(multiplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(DivButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(divButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(RadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(squareRootButton, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -308,17 +308,17 @@ public class CustomOperation extends javax.swing.JFrame {
                                 .addComponent(swapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(overButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(invertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2)
-                    .addComponent(InsertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(insertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SubmitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                            .addComponent(SaveToFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(saveToFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(modifyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -327,7 +327,7 @@ public class CustomOperation extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(LoadFromFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(loadFromFileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -345,12 +345,12 @@ public class CustomOperation extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AddButton)
-                            .addComponent(DiffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DivButton)
-                            .addComponent(RadButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(InvertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addButton)
+                            .addComponent(diffButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(multiplyButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(divButton)
+                            .addComponent(squareRootButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(dupButton)
@@ -373,13 +373,13 @@ public class CustomOperation extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(modifyButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(SubmitButton)
+                                .addComponent(submitButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(SaveToFileButton)
+                                .addComponent(saveToFileButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(LoadFromFileButton)))))
+                                .addComponent(loadFromFileButton)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(InsertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(insertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -407,56 +407,56 @@ public class CustomOperation extends javax.swing.JFrame {
  * Button that allows to the user to insert the operation into the area (Hash Map) that preserve all custom operations created.
  * @param evt 
  */
-    private void InsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertButtonActionPerformed
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
         String name = insertNameField.getText();
         String operation = operationArea.getText();
         udo.insertUDO(name, operation);
         model.addElement(name);
         insertNameField.setText("");
         operationArea.setText("");
-    }//GEN-LAST:event_InsertButtonActionPerformed
+    }//GEN-LAST:event_insertButtonActionPerformed
 /**
  * Button that allows to the user to add sum operation into the text field of the operation that a custom operation have to do.
  * @param evt 
  */
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         operationArea.setText(operationArea.getText() + "+ ");
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }//GEN-LAST:event_addButtonActionPerformed
 /**
  * button that allows to the user to add difference operation into the text field of the operation that a custom operation have to do.
  * @param evt 
  */
-    private void DiffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiffButtonActionPerformed
+    private void diffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diffButtonActionPerformed
         operationArea.setText(operationArea.getText() + "- ");
-    }//GEN-LAST:event_DiffButtonActionPerformed
+    }//GEN-LAST:event_diffButtonActionPerformed
 /**
  * Button that allows to the user to add product operation into the text field of the operation that a custom operation have to do.
  * @param evt 
  */
-    private void PerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerButtonActionPerformed
+    private void multiplyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_multiplyButtonActionPerformed
         operationArea.setText(operationArea.getText() + "* ");
-    }//GEN-LAST:event_PerButtonActionPerformed
+    }//GEN-LAST:event_multiplyButtonActionPerformed
 /**
  * Button that allows to the user to add division operation into the text field of the operation that a custom operation have to do.
  * @param evt 
  */
-    private void DivButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DivButtonActionPerformed
+    private void divButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divButtonActionPerformed
         operationArea.setText(operationArea.getText() + "÷ ");
-    }//GEN-LAST:event_DivButtonActionPerformed
+    }//GEN-LAST:event_divButtonActionPerformed
 /**
  * Button that allows to the user to add square root operation into the text field of the operation that a custom operation have to do.
  * @param evt 
  */
-    private void RadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadButtonActionPerformed
+    private void squareRootButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_squareRootButtonActionPerformed
         operationArea.setText(operationArea.getText() + "√ ");
-    }//GEN-LAST:event_RadButtonActionPerformed
+    }//GEN-LAST:event_squareRootButtonActionPerformed
 /**
  * Button that allows to the user to add invert sign operation into the text field of the operation that a custom operation have to do.
  * @param evt 
  */
-    private void InvertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InvertButtonActionPerformed
+    private void invertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertButtonActionPerformed
         operationArea.setText(operationArea.getText() + "+- ");
-    }//GEN-LAST:event_InvertButtonActionPerformed
+    }//GEN-LAST:event_invertButtonActionPerformed
 /**
  * Button that allows to the user to add clear operation into the text field of the operation that a custom operation have to do.
  * @param evt 
@@ -496,54 +496,54 @@ public class CustomOperation extends javax.swing.JFrame {
  * List of the custom operation that the user have created before.
  * @param evt 
  */
-    private void NameListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NameListMouseClicked
-        String key = NameList.getSelectedValue();
-        OperationView.setText(udo.getMap().get(key));
-    }//GEN-LAST:event_NameListMouseClicked
+    private void nameListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameListMouseClicked
+        String key = nameList.getSelectedValue();
+        operationView.setText(udo.getMap().get(key));
+    }//GEN-LAST:event_nameListMouseClicked
 /**
  * Button that allows to the user to delete a custom operation.
  * @param evt 
  */
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-         String key = NameList.getSelectedValue();
+         String key = nameList.getSelectedValue();
          udo.deleteUDO(key);
          this.model.removeElement(key);
-         OperationView.setText("");
+         operationView.setText("");
     }//GEN-LAST:event_deleteButtonActionPerformed
 /**
  * Button that allows to the user to modify a custom operation.
  * @param evt 
  */
     private void modifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyButtonActionPerformed
-        String key = NameList.getSelectedValue();
+        String key = nameList.getSelectedValue();
         insertNameField.setText(key);
         operationArea.setText(udo.getMap().get(key));
         udo.deleteUDO(key);
         this.model.removeElement(key);
-        OperationView.setText("");
+        operationView.setText("");
     }//GEN-LAST:event_modifyButtonActionPerformed
 /**
  * Button that allows to the user to reutilize a custom operation as argument of a new custom operation.
  * @param evt 
  */
-    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
-        operationArea.setText(NameList.getSelectedValue() + " ");
-    }//GEN-LAST:event_SubmitButtonActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        operationArea.setText(nameList.getSelectedValue() + " ");
+    }//GEN-LAST:event_submitButtonActionPerformed
 /**
  * The button allows to the user to save the user defined operations in a file.
  * @param evt 
  */
-    private void SaveToFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveToFileButtonActionPerformed
+    private void saveToFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveToFileButtonActionPerformed
         if(udo.saveToFile()){
             JOptionPane.showMessageDialog(this, "UDO correctly saved on a file");
         }else
             JOptionPane.showMessageDialog(this, "UDO NOT correctly save on a file","ERROR",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_SaveToFileButtonActionPerformed
+    }//GEN-LAST:event_saveToFileButtonActionPerformed
 /**
  * The button allows to the user to reload the user defined operation from a file.
  * @param evt 
  */
-    private void LoadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadFromFileButtonActionPerformed
+    private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
         if(udo.loadFromFile()){
             for (Map.Entry<String, String> entry : udo.getMap().entrySet()) {
                 model.addElement(entry.getKey());
@@ -551,7 +551,7 @@ public class CustomOperation extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "UDO correctly load from a file");
         }else
             JOptionPane.showMessageDialog(this, "UDO NOT correctly load from a file","ERROR",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_LoadFromFileButtonActionPerformed
+    }//GEN-LAST:event_loadFromFileButtonActionPerformed
 
     
     /**
@@ -591,19 +591,13 @@ public class CustomOperation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddButton;
-    private javax.swing.JButton DiffButton;
-    private javax.swing.JButton InsertButton;
-    private javax.swing.JButton LoadFromFileButton;
-    private javax.swing.JList<String> NameList;
-    private javax.swing.JTextArea OperationView;
-    private javax.swing.JButton PerButton;
-    private javax.swing.JButton SaveToFileButton;
-    private javax.swing.JButton SubmitButton;
+    private javax.swing.JButton addButton;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JButton diffButton;
     private javax.swing.JButton dropButton;
     private javax.swing.JButton dupButton;
+    private javax.swing.JButton insertButton;
     private javax.swing.JTextField insertNameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -613,9 +607,15 @@ public class CustomOperation extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton loadFromFileButton;
     private javax.swing.JButton modifyButton;
+    private javax.swing.JButton multiplyButton;
+    private javax.swing.JList<String> nameList;
     private javax.swing.JTextArea operationArea;
+    private javax.swing.JTextArea operationView;
     private javax.swing.JButton overButton;
+    private javax.swing.JButton saveToFileButton;
+    private javax.swing.JButton submitButton;
     private javax.swing.JButton swapButton;
     // End of variables declaration//GEN-END:variables
 }
