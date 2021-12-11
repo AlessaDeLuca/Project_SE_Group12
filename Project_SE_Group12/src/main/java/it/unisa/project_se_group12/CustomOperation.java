@@ -545,6 +545,7 @@ public class CustomOperation extends javax.swing.JFrame {
  */
     private void loadFromFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFromFileButtonActionPerformed
         if(udo.loadFromFile()){
+            model.clear();
             for (Map.Entry<String, String> entry : udo.getMap().entrySet()) {
                 model.addElement(entry.getKey());
             }
